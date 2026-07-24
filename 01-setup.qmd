@@ -133,7 +133,7 @@ Choose **Public repository** — this is what allows reviewers and readers to ac
 ::: {.step-label}
 Step 3
 :::
-Give it a clear name, e.g. `koura-habitat-mesocosm` — use lowercase and hyphens, no spaces
+Give it a clear, consistent name, e.g. `koura-habitat-mesocosm` — lowercase with hyphens or underscores is a common convention, but not a requirement
 :::
 
 ::: {.step-box}
