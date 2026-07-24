@@ -1,0 +1,99 @@
+---
+title: "4. Zenodo"
+subtitle: "Permanent archiving and citable DOIs for your research"
+---
+
+GitHub is great for version control and sharing code during a project — but it is not a permanent archive. Repositories can be deleted, renamed, or made private. **Zenodo** is a permanent, citable archive run by CERN that gives your research a DOI (Digital Object Identifier) that will work forever, even if the GitHub repository moves.
+
+## The key insight: reserve the DOI before you need it
+
+Most researchers think about Zenodo only at the end, when they need to include a data availability statement. This creates a problem: you need the DOI before the paper is accepted (to put it in the manuscript), but you do not want to lock the version before you have made reviewer revisions.
+
+The solution: **Zenodo lets you reserve a DOI without publishing yet.**
+
+```
+Reserve DOI now → put it in manuscript → submit → revise → accept → publish Zenodo record
+        ↑                                                                        ↑
+   DOI exists                                                           DOI goes live
+   (not yet public)                                                    (permanently locked)
+```
+
+## Setting up the GitHub → Zenodo connection
+
+::: {.step-box}
+::: {.step-label}
+One-time setup
+:::
+Go to [zenodo.org](https://zenodo.org) → log in with your GitHub account → Settings → GitHub → toggle your repository ON
+:::
+
+Once connected, Zenodo watches your repository. Every time you create a GitHub **release**, Zenodo automatically archives a snapshot and assigns your DOI to it.
+
+## Before submission: reserve your DOI
+
+::: {.step-box}
+::: {.step-label}
+Step 1
+:::
+Go to [zenodo.org](https://zenodo.org) → click **New Upload**
+:::
+
+::: {.step-box}
+::: {.step-label}
+Step 2
+:::
+Upload your processed data files (CSV, etc.) and fill in the metadata: title, authors, description
+:::
+
+::: {.step-box}
+::: {.step-label}
+Step 3
+:::
+Click **"Reserve DOI"** — you get a DOI immediately (e.g. `10.5281/zenodo.1234567`)
+:::
+
+::: {.step-box}
+::: {.step-label}
+Step 4
+:::
+**Do not click Publish yet** — save as a draft. The record exists and has a DOI, but it is not yet public or locked.
+:::
+
+Now put this DOI in your manuscript's data availability statement:
+
+```
+Data and code supporting this study are available on Zenodo at 
+https://doi.org/10.5281/zenodo.1234567 (will be made publicly 
+available upon acceptance) and on GitHub at 
+https://github.com/yourusername/koura-habitat-mesocosm
+```
+
+::: {.callout-important}
+### Why not just use the GitHub URL?
+GitHub URLs can break — repositories get renamed, moved, or deleted. A Zenodo DOI is permanent and will always resolve, even decades from now. Journals and funders require a stable identifier, not a URL that might stop working.
+:::
+
+## What to upload to Zenodo
+
+Upload the things that are **not** in your GitHub repository (because they are too large or not code):
+
+- Raw data files (CSV, Excel, shapefiles, images)
+- Any data that cannot be publicly shared in full — describe it in the README and upload a sample or data dictionary instead
+- The rendered PDF of your manuscript (after acceptance)
+
+Your **code** does not need to be manually uploaded to Zenodo — when you create a GitHub release at acceptance, Zenodo archives the entire repository automatically.
+
+## Licensing
+
+When creating your Zenodo record, set the license:
+
+- **Data:** CC BY 4.0 — others can use it freely as long as they cite you
+- **Code:** MIT — very permissive, just requires attribution
+
+This tells others exactly what they can do with your work.
+
+---
+
+::: {.text-center}
+[Next: During Review →](05-submission.qmd){.btn .btn-primary}
+:::

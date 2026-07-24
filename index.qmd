@@ -1,0 +1,121 @@
+---
+title: "Open Research Workflow"
+subtitle: "A practical guide to reproducible research using Quarto, Positron, GitHub, and Zenodo"
+page-layout: full
+toc: false
+---
+
+::: {.hero}
+# Open Research Workflow
+
+A step-by-step guide to making your research reproducible, citable, and open — from day one of your project to final publication.
+
+::: {.badge-row}
+<span class="tool-badge">Quarto</span>
+<span class="tool-badge">Positron</span>
+<span class="tool-badge">GitHub</span>
+<span class="tool-badge">Zenodo</span>
+<span class="tool-badge">renv</span>
+<span class="tool-badge">R</span>
+:::
+:::
+
+## Why this guide?
+
+Open and reproducible research is increasingly expected — not just encouraged — by journals, funding agencies, and the scientific community. But the practicalities of *how* to do it are rarely taught explicitly during a PhD.
+
+This guide documents a complete workflow that takes you from setting up a new project on **Day 1** through to archiving your code and data permanently when a paper is **accepted**. It uses realistic placeholder data from a freshwater ecology study so you can follow along with a real example.
+
+::: {.callout-note}
+This guide focuses on a **two-file Quarto approach**: an `analysis.qmd` for all your R code, and an `index.qmd` for your clean manuscript. This keeps your analysis fully transparent while your manuscript stays readable. It is designed for use in **Positron**, the modern successor to RStudio.
+:::
+
+## The workflow at a glance
+
+::: {.phase-grid}
+
+::: {.phase-card}
+::: {.phase-number}
+⚙️
+:::
+### [1. Project Setup](01-setup.qmd)
+Create your folder structure, initialise Git in Positron, push to GitHub, connect to Zenodo, and set up renv — all on Day 1.
+:::
+
+::: {.phase-card}
+::: {.phase-number}
+📄
+:::
+### [2. Quarto Flow](02-quarto-flow.qmd)
+How to use `analysis.qmd` and `index.qmd` together — analysis feeds manuscript, both tracked in version control.
+:::
+
+::: {.phase-card}
+::: {.phase-number}
+🔀
+:::
+### [3. Version Control](03-version-control.qmd)
+Commit habits, what to track, what to ignore, and how to use the Source Control panel in Positron effectively.
+:::
+
+::: {.phase-card}
+::: {.phase-number}
+🗄️
+:::
+### [4. Zenodo](04-zenodo.qmd)
+Reserve a DOI before submission, keep it unlocked during review, and publish permanently at acceptance.
+:::
+
+::: {.phase-card}
+::: {.phase-number}
+📬
+:::
+### [5. During Review](05-submission.qmd)
+Give reviewers access to your code and data via GitHub without locking the version yet.
+:::
+
+::: {.phase-card}
+::: {.phase-number}
+✅
+:::
+### [6. After Acceptance](06-acceptance.qmd)
+Create a GitHub release, publish your Zenodo record, and update your data availability statement.
+:::
+
+:::
+
+## The tools
+
+| Tool | Purpose | Cost |
+|---|---|---|
+| **Quarto** | Write manuscript and analysis together | Free |
+| **Positron** | IDE with built-in Git and Quarto support | Free |
+| **Git** | Track every change locally | Free |
+| **GitHub** | Host code publicly, give reviewers access | Free |
+| **renv** | Record exact R package versions | Free |
+| **Zenodo** | Permanent archive with a citable DOI | Free |
+
+## Who is this for?
+
+This guide is written for **PhD students and early-career researchers** in ecology and related fields who:
+
+- Use R and Quarto for analysis and writing
+- Want to make their research reproducible without a steep learning curve
+- Are preparing to submit to journals that require data availability statements
+- Want a citable DOI for their code and data
+
+## About this guide
+
+This guide was written by [Olivier V. Raven](https://scienceecosystem.org) as part of his PhD research on kōura (*Paranephrops planifrons*) ecology and habitat restoration in Aotearoa New Zealand. 
+
+The guide itself follows the workflow it describes — it is written in Quarto, version controlled on GitHub, and archived on Zenodo.
+
+**License:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — feel free to adapt and reuse with attribution.
+
+**Cite as:** Raven, O.V. (2026). Open Research Workflow: A practical guide to reproducible research using Quarto, Positron, GitHub, and Zenodo. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
+
+---
+
+::: {.text-center}
+[Get started: Project Setup →](01-setup.qmd){.btn .btn-primary}
+:::

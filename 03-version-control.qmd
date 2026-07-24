@@ -1,0 +1,150 @@
+---
+title: "3. Version Control"
+subtitle: "Commit often, commit clearly"
+---
+
+Version control with Git is the single most valuable habit you can build as a researcher. It is your unlimited undo button, your collaboration tool, and your evidence trail — all in one.
+
+## The basic cycle in Positron
+
+Every working session follows the same pattern:
+
+::: {.timeline}
+
+::: {.timeline-item}
+**Work** — write code, analyse data, edit your manuscript in Positron
+:::
+
+::: {.timeline-item}
+**Stage** — in the Source Control panel, click **+** next to the files you changed to stage them
+:::
+
+::: {.timeline-item}
+**Commit** — write a clear message describing what you changed, click the **tick**
+:::
+
+::: {.timeline-item}
+**Sync** — click **Sync** to push your commits to GitHub
+:::
+
+:::
+
+That is it. Repeat every time you finish a meaningful piece of work.
+
+## Writing good commit messages
+
+A commit message should answer: *"What did I change and why?"*
+
+**Good commit messages:**
+```
+"added Bayesian categorical model for shelter preference"
+"fixed figure 3 axis label — was showing mm not cm"
+"updated methods section after reviewer comment 2"
+"added raw data for shoreline survey round 3"
+"removed outlier tank 7 — equipment malfunction noted in fieldbook"
+```
+
+**Bad commit messages:**
+```
+"update"
+"fix"
+"changes"
+"asdfgh"
+"final version 3"
+```
+
+::: {.callout-tip}
+### How often should I commit?
+Commit whenever you have done something you would not want to redo. In practice this usually means at the end of every working session, or whenever you finish a discrete piece of work (writing a new analysis, finishing a section of the manuscript, adding new data).
+:::
+
+## What to track and what to ignore
+
+Not everything belongs in version control. Your `.gitignore` file tells Git what to skip.
+
+**Track these:**
+- All `.qmd` files (your analysis and manuscript)
+- `_quarto.yml` and `styles.css`
+- `renv.lock` (package versions)
+- `references/references.bib`
+- `README.md`
+- Small processed data files (CSVs under ~10 MB)
+- R model objects (`*.rds`) if small enough
+
+**Ignore these:**
+- `data/raw/` large files — upload directly to Zenodo instead
+- `outputs/` generated files — these are reproduced by rendering `analysis.qmd`
+- `_freeze/` Quarto cache
+- `.Rhistory`, `.RData`, `.Rproj.user/`
+- Any file containing passwords, API keys, or personal information
+
+A good starting `.gitignore` for a Quarto/R project:
+
+```
+# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# Quarto
+_freeze/
+_site/
+docs/
+/.quarto/
+
+# Large data files
+data/raw/*.csv
+data/raw/*.xlsx
+*.zip
+
+# renv cache (the lockfile is tracked, not the library)
+renv/library/
+renv/staging/
+
+# OS files
+.DS_Store
+Thumbs.db
+```
+
+## Using branches (optional but useful)
+
+If you are making a big change you are not sure about — like trying a new statistical approach — you can create a branch so your main version stays safe.
+
+In Positron, click the branch name in the bottom left corner → **Create new branch**.
+
+Name it something descriptive like `try-mixed-model` or `reviewer-revisions`.
+
+When you are happy with the changes, merge the branch back into main. If it does not work, just delete the branch — your main version is untouched.
+
+::: {.callout-note}
+### For most PhD projects, one branch is enough
+Branching is more useful for collaborative software projects. For a solo research project, committing to `main` with good commit messages is perfectly fine. Do not over-engineer this.
+:::
+
+## Recovering from mistakes
+
+This is where version control earns its place. If you break something:
+
+**Undo the last commit (keep changes):**
+In Positron Source Control panel → `...` menu → **Undo Last Commit**
+
+**Revert a file to its last committed state:**
+Right-click the file in Source Control → **Discard Changes**
+
+**Go back to an earlier version:**
+In Positron, open the Timeline panel (View → Open View → Timeline) to see the history of any file and restore an earlier version.
+
+## GitHub as a backup
+
+Every time you sync to GitHub, you have a complete backup of your project in the cloud. If your laptop dies, floods, or gets stolen the day before you submit, you can clone your repository onto any computer and pick up exactly where you left off.
+
+```bash
+# Clone your repository onto a new computer
+git clone https://github.com/yourusername/koura-habitat-mesocosm
+```
+
+---
+
+::: {.text-center}
+[Next: Zenodo →](04-zenodo.qmd){.btn .btn-primary}
+:::

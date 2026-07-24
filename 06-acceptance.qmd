@@ -1,0 +1,172 @@
+---
+title: "6. After Acceptance"
+subtitle: "Lock your version permanently with two clicks"
+---
+
+Your paper has been accepted. Now it is time to permanently lock your code and data, publish your Zenodo record, and update your data availability statement.
+
+This is the payoff for all the setup you did on Day 1.
+
+## The acceptance checklist
+
+### Step 1: Make all final changes
+
+Incorporate all final reviewer and editor revisions:
+
+- Update `analysis.qmd` if any analysis changed
+- Update `index.qmd` for all text changes
+- Re-render `analysis.qmd` to update figures
+- Re-render `index.qmd` to generate the final manuscript PDF
+- Update your renv snapshot if you installed any new packages:
+
+```r
+renv::snapshot()
+```
+
+### Step 2: Final commit and push
+
+In Positron Source Control:
+
+- Stage all changed files
+- Write a clear final commit message:
+
+```
+"final version — accepted by Aquatic Conservation July 2026"
+```
+
+- Commit and Sync to GitHub
+
+### Step 3: Create a GitHub release
+
+This is the trigger that tells Zenodo to archive your code.
+
+::: {.step-box}
+::: {.step-label}
+Step 1
+:::
+Go to your GitHub repository in your browser
+:::
+
+::: {.step-box}
+::: {.step-label}
+Step 2
+:::
+Click **Releases** (right sidebar) → **Create a new release**
+:::
+
+::: {.step-box}
+::: {.step-label}
+Step 3
+:::
+Set the tag to `v1.0` and the title to something like:
+`"Final accepted version — Aquatic Conservation"`
+:::
+
+::: {.step-box}
+::: {.step-label}
+Step 4
+:::
+Click **Publish release**
+:::
+
+Zenodo automatically detects this release, archives a permanent snapshot of your entire repository at that exact point, and assigns your reserved DOI to it.
+
+### Step 4: Publish your Zenodo record
+
+::: {.step-box}
+::: {.step-label}
+Step 1
+:::
+Go to [zenodo.org](https://zenodo.org) and find your draft record
+:::
+
+::: {.step-box}
+::: {.step-label}
+Step 2
+:::
+Check and update the metadata if needed — title, authors, description
+:::
+
+::: {.step-box}
+::: {.step-label}
+Step 3
+:::
+Add the published paper DOI in the "Related identifiers" field once you have it
+:::
+
+::: {.step-box}
+::: {.step-label}
+Step 4
+:::
+Set license: **CC BY 4.0** for data, **MIT** for code
+:::
+
+::: {.step-box}
+::: {.step-label}
+Step 5
+:::
+Click **Publish** — the record is now permanently locked and publicly available
+:::
+
+::: {.callout-important}
+### Once published, a Zenodo record cannot be deleted
+This is intentional — permanent archiving means permanent. You can upload a new version (which gets a new DOI), but the original record stays. Make sure your metadata is correct before clicking Publish.
+:::
+
+### Step 5: Update your data availability statement
+
+Replace the "upon acceptance" note in your final manuscript:
+
+**Before:**
+```
+Data and code are available on Zenodo at 
+https://doi.org/10.5281/zenodo.1234567 
+(will be made publicly available upon acceptance).
+```
+
+**After:**
+```
+Data and code supporting this study are available on 
+Zenodo at https://doi.org/10.5281/zenodo.1234567 
+and on GitHub at 
+https://github.com/yourusername/koura-habitat-mesocosm.
+```
+
+## The complete timeline
+
+| When | Action | Where |
+|---|---|---|
+| Day 1 | Create project, init Git, push to GitHub | Positron |
+| Day 1 | Connect GitHub to Zenodo | Zenodo |
+| Day 1 | Set up renv | Positron terminal |
+| Throughout | Commit and sync regularly | Positron |
+| Submission | Reserve Zenodo DOI (draft) | Zenodo |
+| Submission | Add DOI + GitHub link to manuscript | index.qmd |
+| During review | Continue committing revisions | Positron |
+| Acceptance | Final commit and push | Positron |
+| Acceptance | Create GitHub release v1.0 | GitHub website |
+| Acceptance | Publish Zenodo record | Zenodo website |
+| Acceptance | Update data availability statement | index.qmd |
+| Published | Cite DOI in future work | Everywhere |
+
+## What you have now
+
+After following this workflow, you have:
+
+- A complete version history of every decision made during the research
+- A publicly accessible code repository that reviewers and readers can explore
+- A permanent, citable archive with a DOI that will work forever
+- A fully reproducible analysis — anyone can clone your repository, run `renv::restore()`, render `analysis.qmd`, and reproduce every figure and result
+- A manuscript that was produced directly from the same code, eliminating copy-paste errors
+
+::: {.callout-note}
+### This guide itself follows this workflow
+This guide was written in Quarto, version controlled on GitHub, and archived on Zenodo at [doi.org/10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX). The source code is available at [github.com/olivierraven/open-research-workflow](https://github.com/olivierraven/open-research-workflow).
+:::
+
+---
+
+::: {.text-center}
+[View the Quick Reference →](cheatsheet.qmd){.btn .btn-primary}
+[View the Presentation Slides →](slides.qmd){.btn .btn-outline-primary}
+:::

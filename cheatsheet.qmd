@@ -1,0 +1,102 @@
+---
+title: "Quick Reference"
+subtitle: "Everything you need on one page"
+toc: false
+---
+
+## Project structure
+
+```
+my_paper/
+├── _quarto.yml       # project config
+├── index.qmd         # manuscript (text only)
+├── analysis.qmd      # all R code
+├── data/
+│   ├── raw/          # NEVER modify
+│   └── processed/    # output of analysis.qmd
+├── outputs/figures/  # figures from analysis.qmd
+├── references/references.bib
+└── README.md
+```
+
+## Day 1 setup
+
+```r
+# Set up renv
+install.packages("renv")
+renv::init()
+renv::snapshot()
+```
+
+Then in Positron:
+
+1. Source Control → **Initialize Repository**
+2. Stage all → Commit → **Publish to GitHub** (Public)
+3. zenodo.org → Settings → GitHub → toggle repo ON
+
+## Daily workflow
+
+In Positron Source Control panel:
+
+1. Work in `analysis.qmd` and `index.qmd`
+2. Click **+** to stage changed files
+3. Write commit message → click **tick** to commit
+4. Click **Sync** to push to GitHub
+
+## Before submission
+
+1. zenodo.org → New Upload → fill metadata → **Reserve DOI**
+2. Add to manuscript:
+
+```
+Data available at https://doi.org/10.5281/zenodo.XXXXXXX
+(upon acceptance) and https://github.com/user/repo
+```
+
+## After acceptance
+
+1. Final commit: `"final version — accepted by [Journal]"`
+2. Sync to GitHub
+3. GitHub → Releases → **Create release** → tag `v1.0` → Publish
+4. zenodo.org → find draft → **Publish**
+5. Update data availability statement (remove "upon acceptance")
+
+## renv commands
+
+```r
+renv::init()        # set up renv in a new project
+renv::snapshot()    # update lockfile after installing packages
+renv::restore()     # install packages from lockfile (for reproducibility)
+```
+
+## Render order
+
+Always render in this order if analysis has changed:
+
+1. Render `analysis.qmd` → updates figures in `outputs/`
+2. Render `index.qmd` → uses updated figures
+
+## Licenses
+
+| Content type | License |
+|---|---|
+| Data | CC BY 4.0 |
+| Code | MIT |
+| Guide/manuscript | CC BY 4.0 |
+
+## Tools and links
+
+| Tool | URL |
+|---|---|
+| Quarto | [quarto.org](https://quarto.org) |
+| Positron | [positron.posit.co](https://positron.posit.co) |
+| GitHub | [github.com](https://github.com) |
+| Zenodo | [zenodo.org](https://zenodo.org) |
+| Anonymous GitHub | [anonymous.4open.science](https://anonymous.4open.science) |
+| renv docs | [rstudio.github.io/renv](https://rstudio.github.io/renv) |
+
+## Further reading
+
+- Le Foll (2026): [Quarto for Reproducible Research](https://elenlefoll.quarto.pub/quarto4research/)
+- blenback: [R for Reproducible Research](https://blenback.github.io/R-for-Reproducible-Research/)
+- SIB Swiss: [Make Your Research FAIRer](https://sib-swiss.github.io/reproducible-analysis-training/)

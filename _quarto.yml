@@ -1,0 +1,75 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Open Research Workflow"
+  description: "A practical guide to reproducible research using Quarto, Positron, GitHub, and Zenodo"
+  favicon: images/favicon.png
+  
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: 01-setup.qmd
+        text: "1. Setup"
+      - href: 02-quarto-flow.qmd
+        text: "2. Quarto Flow"
+      - href: 03-version-control.qmd
+        text: "3. Version Control"
+      - href: 04-zenodo.qmd
+        text: "4. Zenodo"
+      - href: 05-submission.qmd
+        text: "5. Submission"
+      - href: 06-acceptance.qmd
+        text: "6. Acceptance"
+    right:
+      - icon: github
+        href: https://github.com/olivierraven/open-research-workflow
+      - href: slides.qmd
+        text: "Slides"
+
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "The Workflow"
+        contents:
+          - href: index.qmd
+            text: "Overview"
+          - href: 01-setup.qmd
+            text: "1. Project Setup"
+          - href: 02-quarto-flow.qmd
+            text: "2. Quarto Flow"
+          - href: 03-version-control.qmd
+            text: "3. Version Control"
+          - href: 04-zenodo.qmd
+            text: "4. Zenodo"
+          - href: 05-submission.qmd
+            text: "5. During Review"
+          - href: 06-acceptance.qmd
+            text: "6. After Acceptance"
+      - section: "Resources"
+        contents:
+          - href: slides.qmd
+            text: "Presentation Slides"
+          - href: cheatsheet.qmd
+            text: "Quick Reference"
+
+  page-footer:
+    left: "© Olivier V. Raven | [ScienceEcosystem.org](https://scienceecosystem.org)"
+    right: "CC BY 4.0"
+
+  open-graph: true
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+    highlight-style: github
+    css: styles.css

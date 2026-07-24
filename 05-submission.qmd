@@ -1,0 +1,91 @@
+---
+title: "5. During Review"
+subtitle: "Give reviewers access without locking your version"
+---
+
+Once your manuscript is submitted, reviewers need to be able to access your code and data. Since your GitHub repository is public, this is automatic — but there are a few things worth knowing.
+
+## What reviewers can access via GitHub
+
+When you include your GitHub URL in the manuscript, reviewers can see:
+
+- Your `analysis.qmd` — every modelling decision, every line of code
+- Your `data/processed/` folder — the cleaned data used in the analysis
+- Your `renv.lock` — the exact package versions you used
+- Your complete commit history — every change you made throughout the project
+- Your README — how to reproduce the analysis
+
+This level of transparency builds trust in your results and increasingly satisfies journal data availability requirements.
+
+## Keeping your Zenodo record unlocked during review
+
+Your Zenodo draft record has a DOI but is not yet published. This means:
+
+- The DOI in your manuscript is real and valid
+- The record is not yet publicly visible (no one can access it yet)
+- You can still make changes to the data and code
+- You can update the metadata
+
+This is exactly what you want during review — the DOI is reserved, the record is not locked.
+
+::: {.callout-tip}
+### Keep committing during review
+Continue to commit and push changes to GitHub during the review period. If you make revisions based on reviewer comments, those commits become part of the project history. When you create the final release at acceptance, it will include all your revisions.
+:::
+
+## Handling blind review
+
+Some journals use double-blind review where your identity should not be visible to reviewers. Since your GitHub profile may reveal your name, use **Anonymous GitHub**:
+
+::: {.step-box}
+::: {.step-label}
+Step 1
+:::
+Go to [anonymous.4open.science](https://anonymous.4open.science)
+:::
+
+::: {.step-box}
+::: {.step-label}
+Step 2
+:::
+Paste your GitHub repository URL
+:::
+
+::: {.step-box}
+::: {.step-label}
+Step 3
+:::
+Get an anonymous mirror URL to include in the manuscript instead of your real GitHub URL
+:::
+
+The anonymous mirror shows all your code and data without revealing your GitHub username or any identifying information in commit messages.
+
+## Responding to reviewer requests
+
+Reviewers sometimes ask for additional analyses or data. In this workflow:
+
+1. Make the change in `analysis.qmd`
+2. Re-render to update figures
+3. Update `index.qmd` if the text changes
+4. Commit with a message like `"added supplementary analysis per reviewer 2 comment 3"`
+5. Push to GitHub — the reviewer can see the update immediately if they return to the repository
+
+Your Zenodo draft record does not need to be updated during review — wait until the final accepted version.
+
+## Tracking reviewer revisions with Git
+
+A useful practice: when you receive reviewer comments, create a new commit for each substantive change with a message that references the reviewer comment:
+
+```
+"revised discussion per reviewer 1 comment 4 — added predator guild comparison"
+"updated model to include size_class covariate per reviewer 2"
+"added figure S3 showing seasonal variation per editor request"
+```
+
+This creates a clear audit trail of what changed and why. If a reviewer later asks "did you address comment X?", you can point to the exact commit.
+
+---
+
+::: {.text-center}
+[Next: After Acceptance →](06-acceptance.qmd){.btn .btn-primary}
+:::

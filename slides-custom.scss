@@ -1,0 +1,60 @@
+/*-- scss:defaults --*/
+$primary: #2E7D6B;
+$secondary: #4CAF93;
+$body-bg: #ffffff;
+$body-color: #1a1a1a;
+$font-family-sans-serif: "Inter", system-ui, -apple-system, sans-serif;
+$presentation-heading-color: #2E7D6B;
+$code-block-bg: #f4f4f4;
+
+/*-- scss:rules --*/
+
+.reveal {
+  font-size: 1.8rem;
+}
+
+.reveal h1, .reveal h2 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.reveal h3 {
+  color: $secondary;
+  font-weight: 600;
+}
+
+.reveal .slide-number {
+  color: $primary;
+  font-size: 0.8rem;
+}
+
+.reveal footer {
+  font-size: 0.7rem;
+  color: #888;
+}
+
+.reveal .incremental > * {
+  opacity: 0.4;
+}
+
+.reveal .incremental > .visible {
+  opacity: 1;
+}
+
+.reveal pre code {
+  font-size: 0.85em;
+  line-height: 1.5;
+}
+
+.reveal table {
+  font-size: 0.85em;
+}
+
+.reveal table th {
+  background: $primary;
+  color: white;
+}
+
+.text-center {
+  text-align: center;
+}

@@ -1,0 +1,212 @@
+---
+title: "2. Quarto Flow"
+subtitle: "Two files, one workflow: analysis.qmd and index.qmd"
+---
+
+The heart of this workflow is a two-file Quarto structure. Most tutorials use a single `.qmd` file for everything, but separating your analysis from your manuscript gives you the best of both worlds: a clean, readable paper and a fully transparent, reproducible analysis.
+
+## Why two files?
+
+| | `analysis.qmd` | `index.qmd` |
+|---|---|---|
+| **Purpose** | Reproducible analytical record | Clean journal manuscript |
+| **Contains** | All R code, models, figures, tables | Text only, figure references |
+| **Who reads it** | Reviewers, other researchers | Journal editors, readers |
+| **Renders to** | HTML (best for code display) | PDF or Word (for submission) |
+| **Tone** | Code-heavy, annotated | Academic prose |
+
+Both files are version controlled together on GitHub. Together they give the complete picture of your research.
+
+## How they connect
+
+`analysis.qmd` runs all your R code and saves figures and processed data to the `outputs/` folder. `index.qmd` references those saved files.
+
+```
+analysis.qmd  →  runs R code  →  saves to outputs/figures/
+                                                   ↓
+index.qmd     →  references figure  →  manuscript PDF
+```
+
+This means:
+- Changing your analysis in `analysis.qmd` automatically updates the figures in `index.qmd` when you re-render
+- Your manuscript stays clean — no R code chunks in the middle of your methods section
+- A reviewer can open `analysis.qmd` and see every modelling decision you made
+
+## Structure of analysis.qmd
+
+```{.quarto}
+---
+title: "Analysis: Kōura habitat preference study"
+format: html
+execute:
+  echo: true        # show all code
+  warning: false
+  message: false
+---
+
+## Setup
+
+```{{r}}
+#| label: setup
+library(tidyverse)
+library(brms)
+library(ggplot2)
+
+# Load processed data
+data <- read_csv("data/processed/koura_data.csv")
+```
+
+## Data cleaning
+
+```{{r}}
+#| label: data-cleaning
+
+# Remove incomplete observations
+data_clean <- data |>
+  filter(!is.na(shelter_type)) |>
+  mutate(size_class = cut(carapace_length_mm, 
+                          breaks = c(0, 20, 35, Inf),
+                          labels = c("juvenile", "sub-adult", "adult")))
+
+# Save processed data
+write_csv(data_clean, "data/processed/koura_clean.csv")
+```
+
+## Statistical models
+
+```{{r}}
+#| label: model-preference
+#| cache: true
+
+model_preference <- brm(
+  shelter_choice ~ size_class + (1|tank_id),
+  data = data_clean,
+  family = categorical(),
+  chains = 4,
+  iter = 4000
+)
+
+saveRDS(model_preference, "outputs/model_preference.rds")
+```
+
+## Figures
+
+```{{r}}
+#| label: fig-preference
+#| fig-cap: "Kōura shelter preference by size class"
+
+fig_preference <- ggplot(data_clean, 
+                         aes(x = shelter_type, 
+                             fill = size_class)) +
+  geom_bar(position = "dodge") +
+  scale_fill_manual(values = c("#2E7D6B", "#4CAF93", "#A8D5C8")) +
+  labs(x = "Shelter type", 
+       y = "Count",
+       fill = "Size class") +
+  theme_minimal()
+
+# Save for use in manuscript
+ggsave("outputs/figures/fig-preference.png", 
+       fig_preference, 
+       width = 7, height = 5, dpi = 300)
+
+fig_preference
+```
+```
+
+::: {.callout-tip}
+### Use `#| cache: true` for slow models
+Bayesian models can take minutes or hours to run. Adding `#| cache: true` to those chunks means Quarto saves the result and skips re-running on the next render unless the code changes. Combined with `saveRDS()`, this makes your workflow fast even with complex models.
+:::
+
+## Structure of index.qmd
+
+```{.quarto}
+---
+title: "Shelter structure drives refuge selection in kōura"
+author: "Olivier V. Raven, Frank Burdon, Gavan Ussher, Ian Kusabs"
+date: today
+format:
+  pdf:
+    documentclass: article
+    linestretch: 2
+  docx:
+    reference-doc: journal-template.docx
+bibliography: references/references.bib
+csl: references/aquatic-conservation.csl
+---
+
+## Abstract
+
+...
+
+## Introduction
+
+Freshwater crayfish depend on physical refuges to avoid 
+predation [@Parkyn2001]. Here we tested...
+
+## Methods
+
+### Study species
+
+Kōura (*Paranephrops planifrons*) were collected from...
+
+### Statistical analysis
+
+We fitted Bayesian categorical models using the `brms` 
+package [@Burkner2017] in R [@RCoreTeam2024]...
+
+## Results
+
+Kōura showed a strong preference for stone configurations 
+over wood (see @fig-preference).
+
+![Kōura shelter preference by size class. Stone configurations 
+were preferred across all size classes, with the strongest 
+preference in adult animals.](
+outputs/figures/fig-preference.png){#fig-preference}
+
+## Discussion
+
+...
+
+## Data availability
+
+Data and code supporting this study are available on 
+Zenodo at https://doi.org/10.5281/zenodo.XXXXXXX and 
+on GitHub at https://github.com/olivierraven/
+koura-habitat-mesocosm.
+
+## References
+```
+
+## Rendering both files
+
+In Positron, you can render each file independently:
+
+- Click **Render** in the top bar when `analysis.qmd` is open → generates HTML with all your code and outputs
+- Click **Render** when `index.qmd` is open → generates your PDF manuscript
+
+**Always render `analysis.qmd` first** if you have changed any code, so the figures in `outputs/figures/` are up to date before the manuscript renders.
+
+::: {.callout-note}
+### Placeholder data example
+The code examples on this page use realistic but placeholder kōura data. The actual data structure used in published kōura mesocosm studies includes columns for `shelter_type`, `carapace_length_mm`, `tank_id`, `round`, and `sex`. If you are adapting this for your own species, adjust the variable names accordingly.
+:::
+
+## Session info and reproducibility
+
+At the end of your `analysis.qmd`, always include:
+
+```r
+#| label: session-info
+sessionInfo()
+```
+
+This prints all package versions in your rendered HTML — a second line of defence alongside `renv.lock` for anyone trying to reproduce your work.
+
+---
+
+::: {.text-center}
+[Next: Version Control →](03-version-control.qmd){.btn .btn-primary}
+:::

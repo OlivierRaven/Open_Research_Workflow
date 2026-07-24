@@ -1,0 +1,240 @@
+---
+title: "Open Research Workflow"
+subtitle: "Quarto + Positron + GitHub + Zenodo"
+author: "Olivier V. Raven"
+institute: "University of Waikato | ScienceEcosystem.org"
+date: today
+format:
+  revealjs:
+    theme: [default, slides-custom.scss]
+    slide-number: true
+    progress: true
+    logo: images/logo.png
+    footer: "Open Research Workflow | olivierraven.github.io | CC BY 4.0"
+    transition: fade
+    background-transition: fade
+    highlight-style: github
+    code-copy: true
+    width: 1280
+    height: 720
+---
+
+## Why does this matter? {background-color="#2E7D6B"}
+
+::: {.incremental}
+- Journals increasingly **require** data availability statements
+- Reviewers increasingly **check** that analyses are reproducible
+- Funders increasingly **mandate** open data
+- Your future self will thank you when you need to rerun an analysis
+:::
+
+. . .
+
+**The problem:** nobody teaches you *how* to actually do this
+
+---
+
+## The tools {background-color="#1a1a2e"}
+
+| Tool | Purpose |
+|---|---|
+| **Quarto** | Write manuscript + analysis together |
+| **Positron** | IDE with built-in Git support |
+| **GitHub** | Host code, give reviewers access |
+| **renv** | Record exact R package versions |
+| **Zenodo** | Permanent archive + citable DOI |
+
+. . .
+
+All free. All open source.
+
+---
+
+## The two-file approach {background-color="#f8f9fa"}
+
+::: {.columns}
+::: {.column width="50%"}
+### `analysis.qmd`
+All your R code
+
+- Data cleaning
+- Statistical models
+- Figure generation
+- Session info
+
+Renders to **HTML**
+:::
+
+::: {.column width="50%"}
+### `index.qmd`
+Your clean manuscript
+
+- Introduction
+- Methods
+- Results (figures only)
+- Discussion
+
+Renders to **PDF / Word**
+:::
+:::
+
+. . .
+
+Both version controlled together on GitHub
+
+---
+
+## Project structure
+
+```
+my_paper/
+├── _quarto.yml            # project config
+├── index.qmd              # manuscript
+├── analysis.qmd           # all R code
+├── data/
+│   ├── raw/               # NEVER modify
+│   └── processed/         # output of analysis.qmd
+├── outputs/figures/       # figures from analysis.qmd
+├── references/
+└── README.md
+```
+
+---
+
+## Day 1: Setup in Positron {background-color="#2E7D6B" color="white"}
+
+::: {.incremental}
+1. Create project folder structure
+2. Source Control → **Initialize Repository**
+3. Commit → **Publish to GitHub** (Public)
+4. `renv::init()` + `renv::snapshot()`
+5. zenodo.org → Settings → GitHub → toggle repo **ON**
+:::
+
+. . .
+
+**Total time: ~20 minutes**
+
+---
+
+## Daily workflow
+
+In the Positron Source Control panel:
+
+```
+Work → Stage (+) → Commit (✓) → Sync (↑)
+```
+
+. . .
+
+Good commit messages:
+
+```
+"added Bayesian model for shelter preference"
+"fixed figure 3 axis label"  
+"updated discussion after reviewer 2 comment"
+```
+
+. . .
+
+Bad commit messages:
+
+```
+"update"    "fix"    "changes"    "final version 3"
+```
+
+---
+
+## The DOI timing problem
+
+::: {.callout-important appearance="simple"}
+You need the DOI **in the manuscript** before submission, but you do not want to **lock the version** until after revisions.
+:::
+
+. . .
+
+**The solution:** Zenodo lets you reserve a DOI without publishing
+
+```
+Reserve DOI → submit → revise → accept → publish
+     ↑                                       ↑
+DOI exists                            DOI goes live
+(not public yet)                   (permanently locked)
+```
+
+---
+
+## Before submission
+
+::: {.incremental}
+1. zenodo.org → New Upload → fill metadata
+2. Click **Reserve DOI** (do not publish yet)
+3. Add to manuscript:
+:::
+
+. . .
+
+```
+Data available at https://doi.org/10.5281/zenodo.XXXXXXX
+(upon acceptance) and github.com/user/repo
+```
+
+. . .
+
+Reviewers access code directly via the **public GitHub URL**
+
+---
+
+## After acceptance {background-color="#2E7D6B" color="white"}
+
+::: {.incremental}
+1. Final commit: `"final version — accepted by [Journal]"`
+2. Sync to GitHub
+3. GitHub → Releases → **Create release** → tag `v1.0`
+4. zenodo.org → find draft → **Publish**
+5. Update data availability statement
+:::
+
+. . .
+
+**Zenodo automatically archives the release and locks the DOI**
+
+---
+
+## What you get {background-color="#1a1a2e" color="white"}
+
+::: {.incremental}
+- Complete version history of every decision
+- Permanent, citable DOI for code and data
+- Fully reproducible analysis
+- Reviewer access without extra effort
+- Manuscript produced directly from the same code
+:::
+
+---
+
+## Further resources {background-color="#f8f9fa"}
+
+Full guide: **scienceecosystem.org/open-research-workflow**
+
+- Le Foll (2026): Quarto for Reproducible Research
+- blenback: R for Reproducible Research  
+- SIB Swiss: Make Your Research FAIRer
+
+. . .
+
+This presentation itself follows the workflow it describes.
+
+**Source:** github.com/olivierraven/open-research-workflow
+
+---
+
+## Questions? {background-color="#2E7D6B" color="white" text-align="center"}
+
+::: {.text-center}
+**Olivier V. Raven**
+
+University of Waikato | ScienceEcosystem.org
+
+[scienceecosystem.org/open-research-workflow](https://scienceecosystem.org/open-research-workflow)
+:::
