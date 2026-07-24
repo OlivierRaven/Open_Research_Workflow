@@ -73,6 +73,19 @@ https://github.com/yourusername/koura-habitat-mesocosm
 GitHub URLs can break — repositories get renamed, moved, or deleted. A Zenodo DOI is permanent and will always resolve, even decades from now. Journals and funders require a stable identifier, not a URL that might stop working.
 :::
 
+## Invite reviewers to check more than the PDF
+
+Most journal submission systems only ask for a manuscript file — a reviewer can easily miss that there's a live, working repository behind it unless you point them to it directly.
+
+- Mention the GitHub and Zenodo links in your **cover letter**, not just buried in the data availability statement at the end of the PDF.
+- If your journal has a dedicated **code/data availability** field or reviewer-notes box in its submission system, use it too, even if it repeats what's already in the manuscript.
+- For **double-blind review**, use the Anonymous GitHub mirror (see [chapter 5](05-submission.qmd)) so you can still invite reviewers to check the code without revealing your identity.
+
+::: {.callout-tip}
+### Why bother?
+A reviewer who only reads the PDF can only judge whether your results *sound* plausible. A reviewer who can open `analysis.qmd` can actually check your modelling decisions, catch an error before publication, or simply recommend acceptance with more confidence. Chapter 5 covers exactly what reviewers can see and how to give them access.
+:::
+
 ## What to upload to Zenodo
 
 Upload the things that are **not** in your GitHub repository (because they are too large or not code):
