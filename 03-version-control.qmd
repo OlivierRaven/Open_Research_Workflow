@@ -37,7 +37,7 @@ A commit message should answer: *"What did I change and why?"*
 
 **Good commit messages:**
 ```
-"added Bayesian categorical model for shelter preference"
+"added linear model for shelter preference"
 "fixed figure 3 axis label — was showing mm not cm"
 "updated methods section after reviewer comment 2"
 "added raw data for shoreline survey round 3"

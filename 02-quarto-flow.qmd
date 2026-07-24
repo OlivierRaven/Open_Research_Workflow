@@ -10,7 +10,7 @@ The heart of this workflow is a two-file Quarto structure. Most tutorials use a 
 | | `analysis.qmd` | `index.qmd` |
 |---|---|---|
 | **Purpose** | Reproducible analytical record | Clean journal manuscript |
-| **Contains** | All R code, models, figures, tables | Text only, figure references |
+| **Contains** | All R code, models, figures, tables | Prose, plus small hidden chunks that *display* precomputed figures/tables/stats |
 | **Who reads it** | Reviewers, other researchers | Journal editors, readers |
 | **Renders to** | HTML (best for code display) | PDF or Word for submission, HTML for a quick preview |
 | **Tone** | Code-heavy, annotated | Academic prose |
@@ -28,13 +28,18 @@ index.qmd     →  references figure  →  manuscript PDF
 ```
 
 This means:
-- Changing your analysis in `analysis.qmd` automatically updates the figures in `index.qmd` when you re-render
-- Your manuscript stays clean — no R code chunks in the middle of your methods section
+- Changing your analysis in `analysis.qmd` automatically updates the figures, tables, and any inline numbers in `index.qmd` when you re-render
+- Your manuscript stays clean — no *modelling or cleaning* code in the middle of your methods section
 - A reviewer can open `analysis.qmd` and see every modelling decision you made
+
+::: {.callout-note}
+### A small exception: display-only chunks and inline code
+"Text only" doesn't mean *zero* code in `index.qmd`. A tiny `echo: false` chunk that reads a saved table and prints it, or inline code like `` `r round(mean_stone, 1)` `` in a sentence, is normal and encouraged — it's not analysis, just display. This is what keeps the numbers in your prose in sync with your actual results instead of a hardcoded value someone forgets to update after a revision.
+:::
 
 ## Structure of analysis.qmd
 
-```{.quarto}
+````{.quarto}
 ---
 title: "Analysis: Kōura habitat preference study"
 format: html
@@ -51,7 +56,6 @@ execute:
 # Packages are installed once via renv::restore() (see chapter 1) —
 # no install.packages() here, so everyone gets the exact locked versions.
 library(tidyverse)
-library(brms)
 library(ggplot2)
 
 # Load raw data — never modify data/raw/ itself, only read from it
@@ -74,21 +78,39 @@ data_clean <- data |>
 write_csv(data_clean, "data/derived/koura_clean.csv")
 ```
 
+## Summary table
+
+```{{r}}
+#| label: tbl-summary
+#| tbl-cap: "Mean carapace length by shelter type"
+
+summary_table <- data_clean |>
+  summarise(
+    n = n(),
+    mean_length = mean(carapace_length_mm),
+    sd_length = sd(carapace_length_mm),
+    .by = shelter_type
+  )
+
+write_csv(summary_table, "outputs/tables/summary_table.csv")
+summary_table
+```
+
 ## Statistical models
 
 ```{{r}}
 #| label: model-preference
 #| cache: true
 
-model_preference <- brm(
-  shelter_choice ~ size_class + (1|tank_id),
-  data = data_clean,
-  family = categorical(),
-  chains = 4,
-  iter = 4000
-)
+model_preference <- lm(carapace_length_mm ~ shelter_type, data = data_clean)
+summary(model_preference)
+
+# Save the p-value too, so index.qmd can report it inline instead of
+# a hardcoded number that goes stale if the model changes
+model_pvalue <- summary(model_preference)$coefficients[2, "Pr(>|t|)"]
 
 saveRDS(model_preference, "outputs/model_preference.rds")
+saveRDS(model_pvalue, "outputs/model_pvalue.rds")
 ```
 
 ## Figures
@@ -114,19 +136,19 @@ ggsave("outputs/figures/fig-preference.png",
 
 fig_preference
 ```
-```
+````
 
 ::: {.callout-tip}
 ### Use `#| cache: true` for slow models
-Bayesian models can take minutes or hours to run. Adding `#| cache: true` to those chunks means Quarto saves the result and skips re-running on the next render unless the code changes. Combined with `saveRDS()`, this makes your workflow fast even with complex models.
+Some models take a while to run, especially with large datasets. Adding `#| cache: true` to those chunks means Quarto saves the result and skips re-running on the next render unless the code changes. Combined with `saveRDS()`, this keeps your workflow fast even as your analysis grows.
 :::
 
 ## Structure of index.qmd
 
-```{.quarto}
+````{.markdown}
 ---
 title: "Shelter structure drives refuge selection in kōura"
-author: "Olivier V. Raven, Frank Burdon, Gavan Ussher, Ian Kusabs"
+author: "Olivier V. Raven, A. N. Other"
 date: today
 format:
   pdf:
@@ -157,18 +179,37 @@ Kōura (*Paranephrops planifrons*) were collected from...
 
 ### Statistical analysis
 
-We fitted Bayesian categorical models using the `brms` 
-package [@Burkner2017] in R [@RCoreTeam2024]...
+We fitted linear models in R [@RCoreTeam2024]...
 
 ## Results
 
-Kōura showed a strong preference for stone configurations 
-over wood (see @fig-preference).
+```{{r}}
+#| label: setup-results
+#| echo: false
 
-![Kōura shelter preference by size class. Stone configurations 
-were preferred across all size classes, with the strongest 
+library(tidyverse)
+summary_table <- read_csv("outputs/tables/summary_table.csv")
+model_pvalue <- readRDS("outputs/model_pvalue.rds")
+mean_stone <- summary_table$mean_length[summary_table$shelter_type == "stone"]
+```
+
+Kōura showed a strong preference for stone configurations
+over wood (see @fig-preference). Carapace length also differed
+significantly by shelter type (mean stone = `r round(mean_stone, 1)` mm,
+p = `r round(model_pvalue, 3)`; @tbl-summary).
+
+![Kōura shelter preference by size class. Stone configurations
+were preferred across all size classes, with the strongest
 preference in adult animals.](
 outputs/figures/fig-preference.png){#fig-preference}
+
+```{{r}}
+#| label: tbl-summary
+#| tbl-cap: "Mean (± SD) carapace length by shelter type"
+#| echo: false
+
+knitr::kable(summary_table)
+```
 
 ## Discussion
 
@@ -182,7 +223,7 @@ on GitHub at https://github.com/olivierraven/
 koura-habitat-mesocosm.
 
 ## References
-```
+````
 
 ## Rendering both files
 
@@ -192,6 +233,11 @@ In Positron, you can render each file independently:
 - Click **Render** when `index.qmd` is open → generates your PDF manuscript
 
 **Always render `analysis.qmd` first** if you have changed any code, so the figures in `outputs/figures/` are up to date before the manuscript renders.
+
+::: {.callout-tip}
+### Why does index.qmd load tidyverse and re-read the CSV again?
+Each `.qmd` file renders in its own independent R session — `index.qmd` never sees the objects `analysis.qmd` created in memory, only the files it saved (`outputs/tables/summary_table.csv`, `outputs/model_pvalue.rds`, `outputs/figures/fig-preference.png`). That's the whole point of the two-file split: `index.qmd`'s hidden setup chunk just re-loads those saved results, it doesn't repeat any analysis.
+:::
 
 ::: {.callout-note}
 ### Placeholder data example

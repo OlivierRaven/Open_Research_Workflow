@@ -106,12 +106,14 @@ Skip the blank-page problem. This is a working Quarto project — folder structu
 
 ## Who is this for?
 
-This guide is written for **PhD students and early-career researchers** in ecology and related fields who:
+This guide is for **anyone doing research** who:
 
-- Use R and Quarto for analysis and writing
-- Want to make their research reproducible without a steep learning curve
-- Are preparing to submit to journals that require data availability statements
-- Want a citable DOI for their code and data
+- Uses R and Quarto for analysis and writing
+- Wants to make their research reproducible without a steep learning curve
+- Is preparing to submit to journals that require data availability statements
+- Wants a citable DOI for their code and data
+
+The workflow itself is field-agnostic — it's just Quarto, Git, GitHub, renv, and Zenodo. The worked examples throughout use freshwater ecology data because that's the author's own research, but nothing about the setup is ecology-specific.
 
 ## About this guide
 

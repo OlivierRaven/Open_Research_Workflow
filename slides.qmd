@@ -129,7 +129,7 @@ Work → Stage (+) → Commit (✓) → Sync (↑)
 Good commit messages:
 
 ```
-"added Bayesian model for shelter preference"
+"added linear model for shelter preference"
 "fixed figure 3 axis label"  
 "updated discussion after reviewer 2 comment"
 ```
