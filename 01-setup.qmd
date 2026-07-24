@@ -177,6 +177,11 @@ When someone else downloads your repository and runs `renv::restore()`, they get
 Without renv, a figure that looks one way in your R version 4.3 might look completely different when a reviewer runs it in R 4.1. Package updates change defaults, colour schemes, and even statistical outputs. renv eliminates this problem.
 :::
 
+::: {.callout-tip}
+### Using Python instead of R?
+renv is R-specific, but the same idea applies: use `venv` + `requirements.txt`, `conda` + `environment.yml`, or Poetry to lock your dependencies, and commit that lockfile the same way you would `renv.lock`. Everything else on this page — folder structure, Git, GitHub, Zenodo — works exactly the same regardless of language.
+:::
+
 ## 1.5 Connect GitHub to Zenodo (one-time setup)
 
 This is the step that makes the GitHub → Zenodo workflow automatic. Do it once and it works for every repository.

@@ -95,6 +95,11 @@ Create a GitHub release, publish your Zenodo record, and update your data availa
 | **renv** | Record exact R package versions | Free |
 | **Zenodo** | Permanent archive with a citable DOI | Free |
 
+::: {.callout-note}
+### Python users: this workflow applies to you too
+Quarto and Positron both support Python as a first-class language — `{python}` code chunks work the same way `{r}` chunks do, and the two-file structure, Git/GitHub habits, and Zenodo archiving are entirely language-agnostic. The one R-specific piece is **renv**; swap it for `venv`/`requirements.txt`, `conda`/`environment.yml`, or Poetry to get the same locked-dependency guarantee.
+:::
+
 ## Get the starter template
 
 Skip the blank-page problem. This is a working Quarto project — folder structure, `analysis.qmd`, `index.qmd`, placeholder data — that renders out of the box. Every file marks exactly what to replace with `FILL IN` comments.
