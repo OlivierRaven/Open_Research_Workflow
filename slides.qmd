@@ -73,7 +73,7 @@ Your clean manuscript
 - Results (figures, tables, inline stats)
 - Discussion
 
-Renders to **PDF / Word**
+Renders to **HTML / PDF / Word**
 :::
 :::
 
@@ -85,14 +85,12 @@ Both version controlled together on GitHub
 
 ## Numbers that stay in sync {background-color="#f8f9fa"}
 
-::: {.callout-important appearance="simple"}
-Never filter or subset data inside `index.qmd` — compute it in `analysis.qmd`, save it, then just read it back.
-:::
+Quarto can pull real numbers straight from your analysis into your prose — no more hand-typing a mean or p-value into the manuscript.
 
 . . .
 
 ```{.r}
-# analysis.qmd
+# analysis.qmd — compute it once, save what you want to report
 report_stats <- list(
   mean_stone = summary_table$mean_length[summary_table$shelter_type == "stone"],
   pvalue = summary(model_preference)$coefficients[2, "Pr(>|t|)"]
@@ -103,13 +101,22 @@ saveRDS(report_stats, "outputs/report_stats.rds")
 . . .
 
 ```{.markdown}
-<!-- index.qmd -->
+<!-- index.qmd — just read it back in a sentence -->
 mean = `r round(report_stats$mean_stone, 1)` mm, p = `r round(report_stats$pvalue, 3)`
 ```
 
 . . .
 
-Re-render → the manuscript updates itself. No stale numbers.
+::: {.rendered-output}
+[Rendered output]{.label}
+Carapace length differed significantly by shelter type (mean stone = **34.2 mm**, p = **0.003**).
+:::
+
+. . .
+
+::: {.callout-tip appearance="simple"}
+Re-render → the manuscript updates itself. Change your model, get a new number for free.
+:::
 
 ---
 
@@ -122,8 +129,10 @@ my_paper/
 ├── analysis.qmd           # all R code
 ├── data/
 │   ├── raw/               # NEVER modify
-│   └── derived/            # output of analysis.qmd
-├── outputs/figures/       # figures from analysis.qmd
+│   └── derived/           # output of analysis.qmd
+├── outputs/
+│   ├── figures/           # figures from analysis.qmd
+│   └── tables/            # tables from analysis.qmd
 ├── references/
 └── README.md
 ```
@@ -254,7 +263,7 @@ Full guide: **scienceecosystem.org/open-research-workflow**
 
 This presentation itself follows the workflow it describes.
 
-**Source:** github.com/olivierraven/open-research-workflow
+**Source:** github.com/OlivierRaven/Open_Research_Workflow
 
 ---
 

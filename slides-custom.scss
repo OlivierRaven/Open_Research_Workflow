@@ -58,3 +58,20 @@ $code-block-bg: #f4f4f4;
 .text-center {
   text-align: center;
 }
+
+.rendered-output {
+  background: rgba(46, 125, 107, 0.08);
+  border-left: 4px solid $primary;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+}
+
+.rendered-output .label {
+  display: block;
+  color: $primary;
+  font-weight: 600;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.3em;
+}

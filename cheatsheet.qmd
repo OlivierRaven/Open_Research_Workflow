@@ -14,7 +14,9 @@ my_paper/
 ├── data/
 │   ├── raw/          # NEVER modify
 │   └── derived/      # output of analysis.qmd
-├── outputs/figures/  # figures from analysis.qmd
+├── outputs/
+│   ├── figures/      # figures from analysis.qmd
+│   └── tables/       # tables from analysis.qmd
 ├── references/references.bib
 └── README.md
 ```
