@@ -49,6 +49,20 @@ All free. All open source.
 
 ---
 
+## More than just organisation {background-color="#f8f9fa"}
+
+::: {.incremental}
+- PDF renders through **LaTeX** — proper academic typesetting immediately, not a fight with Word's page layout
+- One-line **CSL** swap reformats every citation to match any journal's house style
+- Structured author metadata — **ORCID iDs**, affiliations, funding statements — flows straight into the rendered output
+:::
+
+. . .
+
+Change the journal, change one line. Not a re-format.
+
+---
+
 ## The two-file approach {background-color="#f8f9fa"}
 
 ::: {.columns}
@@ -122,27 +136,10 @@ Re-render → the manuscript updates itself. Change your model, get a new number
 
 ---
 
-## Project structure
-
-```
-my_paper/
-├── _quarto.yml            # project config
-├── index.qmd              # manuscript
-├── analysis.qmd           # all R code
-├── data/
-│   ├── raw/               # NEVER modify
-│   └── derived/           # output of analysis.qmd
-├── outputs/
-│   ├── figures/           # figures from analysis.qmd
-│   └── tables/            # tables from analysis.qmd
-├── references/
-└── README.md
-```
-
----
-
 ## Day 1: Setup in Positron {background-color="#2E7D6B" color="white"}
 
+::: {.columns}
+::: {.column width="55%"}
 ::: {.incremental}
 1. Create project folder structure
 2. Source Control → **Initialize Repository**
@@ -150,10 +147,29 @@ my_paper/
 4. `renv::init()` + `renv::snapshot()`
 5. zenodo.org → Settings → GitHub → toggle repo **ON**
 :::
+:::
+
+::: {.column width="45%"}
+```
+my_paper/
+├── _quarto.yml
+├── index.qmd
+├── analysis.qmd
+├── data/
+│   ├── raw/         # NEVER modify
+│   └── derived/
+├── outputs/
+│   ├── figures/
+│   └── tables/
+├── references/
+└── README.md
+```
+:::
+:::
 
 . . .
 
-**Total time: ~20 minutes**
+`.gitignore` keeps `outputs/`, raw data, and OS files out of version control — **total time: ~20 minutes**
 
 ---
 
@@ -182,6 +198,21 @@ Bad commit messages:
 ```
 "update"    "fix"    "changes"    "final version 3"
 ```
+
+---
+
+## Working with co-authors {background-color="#f8f9fa"}
+
+::: {.incremental}
+- Add them as **GitHub collaborators** — they push commits directly, same as you
+- **Sync before you start** each session to avoid conflicts
+- Split responsibility by section to avoid two people editing the same part
+- 3+ people or experimental work → give each person a **branch**
+:::
+
+. . .
+
+List every co-author (with **ORCID**) on the Zenodo record — that's what makes the archived record credit everyone correctly
 
 ---
 
@@ -221,7 +252,31 @@ Data available at https://doi.org/10.5281/zenodo.XXXXXXX
 
 . . .
 
-Reviewers access code directly via the **public GitHub URL**
+Reviewers access code directly via the **public GitHub URL** — but many won't think to look unless you tell them:
+
+::: {.incremental}
+- Mention the links in your **cover letter**, not just the data availability statement
+- Double-blind journal? Use an **Anonymous GitHub** mirror instead of your real profile
+:::
+
+---
+
+## Licensing & keeping things secure {background-color="#f8f9fa"}
+
+**Defaults that satisfy nearly every journal/funder:** CC BY 4.0 (data) · MIT (code)
+
+. . .
+
+::: {.incremental}
+- Need more control? CC BY-NC blocks commercial use, GPL keeps derivatives open-source
+- **A license controls reuse, not access** — it doesn't hide anything
+:::
+
+. . .
+
+::: {.callout-important appearance="simple"}
+Sensitive data (privacy, sovereignty, endangered species locations)? Use Zenodo's **access right** setting: Open, Embargoed, or **Restricted** (metadata public, files require your approval) — not a stricter license.
+:::
 
 ---
 

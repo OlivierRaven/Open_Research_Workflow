@@ -16,6 +16,8 @@ Here you can download a full working example project that you can modify for you
 ::: {.text-center}
 [⬇ Download the .zip](downloads/open-research-workflow-template.zip){.btn .btn-primary}
 [Use the GitHub template →](https://github.com/OlivierRaven/open-research-workflow-template){.btn .btn-outline-primary}
+
+Not sure what you'd actually get? See the manuscript this template renders — [HTML](downloads/example-manuscript.html) · [PDF](downloads/example-manuscript.pdf) · [Word](downloads/example-manuscript.docx){download="example-manuscript.docx"}
 :::
 
 Prefer to build it up yourself, piece by piece? Follow the steps below to create the same structure from scratch.
@@ -66,6 +68,16 @@ format:
 bibliography: references/references.bib
 csl: your-journal.csl
 ```
+
+::: {.callout-tip}
+### Why the PDF already looks publication-ready
+Quarto renders PDF output through LaTeX, the typesetting system academic publishing has used for decades — proper margins, line spacing, font metrics, and pagination come for free from `documentclass: article`. You're not fighting Word's page-layout quirks to match a journal's format; you get correct academic typesetting the moment you hit render.
+:::
+
+::: {.callout-tip}
+### Why `csl` is worth setting up
+The `csl` (Citation Style Language) file controls exactly how in-text citations and the reference list are formatted — and journals are picky about this. Instead of manually reformatting every reference by hand, download your target journal's `.csl` file from [zotero.org/styles](https://www.zotero.org/styles) (most journals are already there), point `csl:` at it, and every citation in your manuscript instantly matches that journal's house style. Switching journals later is a one-line change, not a re-format.
+:::
 
 ## 1.2 Initialise Git in Positron
 

@@ -100,12 +100,42 @@ Your **code** does not need to be manually uploaded to Zenodo — when you creat
 
 ## Licensing
 
-When creating your Zenodo record, set the license:
+When creating your Zenodo record, you choose a license — this controls what others are allowed to **do** with your work once they have it. It's a different question from who can **access** it in the first place, which is covered separately below.
 
-- **Data:** CC BY 4.0 — others can use it freely as long as they cite you
-- **Code:** MIT — very permissive, just requires attribution
+::: {.callout-tip}
+### Not sure? Use these defaults
+**Data:** CC BY 4.0 · **Code:** MIT. These satisfy nearly every journal and funder requirement and are the most common choice in open research. Skip ahead unless you have a specific reason to choose differently.
+:::
 
-This tells others exactly what they can do with your work.
+### Data licenses, in plain language
+
+| License | What it means |
+|---|---|
+| **CC0** | No rights reserved at all — public domain. Anyone can use it for anything, no attribution required. |
+| **CC BY 4.0** | Anyone can use, adapt, or even sell it — as long as they credit you. The standard choice for open research data. |
+| **CC BY-SA** | Same as CC BY, but anything built on your data must be shared under the same license. |
+| **CC BY-NC** | Same as CC BY, but blocks commercial use — others can't sell products built on your data without asking you first. |
+| **CC BY-ND** | Others can share your work as-is, but can't adapt or modify it. Rarely used for research data since it blocks reuse. |
+
+### Code licenses, in plain language
+
+| License | What it means |
+|---|---|
+| **MIT** | Do almost anything with it — use, modify, sell — just keep the attribution notice. Simplest and most common for research code. |
+| **Apache 2.0** | Like MIT, plus an explicit patent grant. Worth it if your method could be patentable. |
+| **GPL v3** | "Copyleft" — anyone who builds on your code must also release their version as open source. Protects against someone taking it closed-source. |
+
+::: {.callout-important}
+### Licensing controls reuse, not access — that's a separate setting
+A restrictive license doesn't stop your data from being *visible* to everyone. If you have data that genuinely can't be public — Indigenous data sovereignty considerations, endangered species locations, participant privacy, commercially sensitive results — the license is the wrong tool. Use Zenodo's **access right** setting instead:
+
+- **Open** — anyone can view and download (the default, and what this guide assumes throughout)
+- **Embargoed** — stays closed until a date you set, then automatically opens (useful when a patent filing or product launch needs to come first)
+- **Restricted** — the record's metadata is public, but the files themselves require a request, which you approve individually
+- **Closed** — nothing is publicly accessible at all; only appropriate when nothing whatsoever can be shared, which most journals and funders won't accept for a data availability statement
+
+For genuinely sensitive data, the common pattern is: upload a sample or data dictionary as **Open**, and set the full dataset to **Restricted** with clear contact details in the README for legitimate access requests.
+:::
 
 ---
 

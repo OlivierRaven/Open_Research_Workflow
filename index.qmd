@@ -30,6 +30,8 @@ This guide documents a complete workflow that takes you from setting up a new pr
 This guide focuses on a **two-file Quarto approach**: an `analysis.qmd` for all your R code, and an `index.qmd` for your clean manuscript. This keeps your analysis fully transparent while your manuscript stays readable. It is designed for use in **Positron**, the modern successor to RStudio.
 :::
 
+It's not just organisation, either: Quarto renders PDF through LaTeX, so you get proper academic typesetting immediately, and a one-line `csl:` swap reformats every citation to match any journal's house style — no manual reference wrangling. More on both in [chapter 1](01-setup.qmd#your-_quarto.yml).
+
 ## The workflow at a glance
 
 ::: {.phase-grid}
@@ -107,6 +109,8 @@ Skip the blank-page problem. This is a working Quarto project — folder structu
 ::: {.text-center}
 [⬇ Download the .zip](downloads/open-research-workflow-template.zip){.btn .btn-primary}
 [Use the GitHub template →](https://github.com/OlivierRaven/open-research-workflow-template){.btn .btn-outline-primary}
+
+Not sure what you'd actually get? See the manuscript this template renders — [HTML](downloads/example-manuscript.html) · [PDF](downloads/example-manuscript.pdf) · [Word](downloads/example-manuscript.docx){download="example-manuscript.docx"}
 :::
 
 ## Who is this for?

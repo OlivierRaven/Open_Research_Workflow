@@ -232,6 +232,37 @@ koura-habitat-mesocosm.
 ## References
 ````
 
+::: {.callout-tip}
+### Going further: rich scholarly metadata
+The `author:` field can hold far more than a name — structured entries with ORCID iDs, affiliations, a corresponding-author flag, funding statements, and keywords, all of which flow through into your rendered PDF/HTML and are readable by indexers like Crossref. Handy for a thesis chapter or anything with multiple co-authors:
+
+```yaml
+author:
+  - name:
+      given: A. N.
+      family: Other
+    orcid: 0000-0000-0000-0000
+    affiliations:
+      - name: Your University
+        department: Your Department
+    corresponding: true
+  - name:
+      given: Second
+      family: Author
+    orcid: 0000-0000-0000-0001
+    affiliations:
+      - name: Collaborating Institution
+
+keywords:
+  - your keyword
+  - another keyword
+
+funding: "This research was supported by [funder], grant [number]."
+```
+
+See [Quarto's author/affiliations docs](https://quarto.org/docs/authoring/front-matter.html) for the full schema.
+:::
+
 ## Rendering both files
 
 In Positron, you can render each file independently:
