@@ -101,8 +101,10 @@ saveRDS(report_stats, "outputs/report_stats.rds")
 . . .
 
 ```{.markdown}
-<!-- index.qmd — just read it back in a sentence -->
-mean = `r round(report_stats$mean_stone, 1)` mm, p = `r round(report_stats$pvalue, 3)`
+<!-- index.qmd -->
+Carapace length differed significantly by shelter type
+(mean stone = `r round(report_stats$mean_stone, 1)` mm,
+p = `r round(report_stats$pvalue, 3)`).
 ```
 
 . . .

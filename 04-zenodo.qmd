@@ -1,6 +1,8 @@
 ---
 title: "4. Zenodo"
 subtitle: "Permanent archiving and citable DOIs for your research"
+filters:
+  - reading-time.lua
 ---
 
 GitHub is great for version control and sharing code during a project — but it is not a permanent archive. Repositories can be deleted, renamed, or made private. **Zenodo** is a permanent, citable archive run by CERN that gives your research a DOI (Digital Object Identifier) that will work forever, even if the GitHub repository moves.

@@ -1,6 +1,8 @@
 ---
 title: "3. Version Control"
 subtitle: "Commit often, commit clearly"
+filters:
+  - reading-time.lua
 ---
 
 Version control with Git is the single most valuable habit you can build as a researcher. It is your unlimited undo button, your collaboration tool, and your evidence trail — all in one.

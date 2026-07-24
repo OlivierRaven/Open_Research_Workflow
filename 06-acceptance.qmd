@@ -1,6 +1,8 @@
 ---
 title: "6. After Acceptance"
 subtitle: "Lock your version permanently with two clicks"
+filters:
+  - reading-time.lua
 ---
 
 Your paper has been accepted. Now it is time to permanently lock your code and data, publish your Zenodo record, and update your data availability statement.

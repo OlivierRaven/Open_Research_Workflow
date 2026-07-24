@@ -1,6 +1,8 @@
 ---
 title: "5. During Review"
 subtitle: "Give reviewers access without locking your version"
+filters:
+  - reading-time.lua
 ---
 
 Once your manuscript is submitted, reviewers need to be able to access your code and data. Since your GitHub repository is public, this is automatic — but there are a few things worth knowing.

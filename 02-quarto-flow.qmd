@@ -1,6 +1,8 @@
 ---
 title: "2. Quarto Flow"
 subtitle: "Two files, one workflow: analysis.qmd and index.qmd"
+filters:
+  - reading-time.lua
 ---
 
 The heart of this workflow is a two-file Quarto structure. Most tutorials use a single `.qmd` file for everything, but separating your analysis from your manuscript gives you the best of both worlds: a clean, readable paper and a fully transparent, reproducible analysis.

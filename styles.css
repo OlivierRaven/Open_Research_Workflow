@@ -156,3 +156,38 @@ pre {
   color: var(--primary);
   font-weight: 600;
 }
+
+/* Reading time badge — pinned to the top-right of the page content */
+#quarto-document-content {
+  position: relative;
+}
+
+.reading-time {
+  position: absolute;
+  top: 0.25rem;
+  right: 0;
+  display: inline-block;
+  color: var(--primary);
+  background: var(--accent);
+  border-radius: 20px;
+  padding: 0.2rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.reading-time p {
+  margin: 0;
+}
+
+.reading-time::before {
+  content: "⏱ ";
+}
+
+@media (max-width: 768px) {
+  .reading-time {
+    position: static;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+}

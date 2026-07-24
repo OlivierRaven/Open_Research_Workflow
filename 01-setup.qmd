@@ -1,6 +1,8 @@
 ---
 title: "1. Project Setup"
 subtitle: "Do this on Day 1 — every time"
+filters:
+  - reading-time.lua
 ---
 
 The most important rule of reproducible research: **set everything up before you start collecting or analysing data**, not after. Retrofitting version control and archiving at the end of a project is painful and error-prone.
