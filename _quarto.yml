@@ -5,8 +5,7 @@ project:
 website:
   title: "Open Research Workflow"
   description: "A practical guide to reproducible research using Quarto, Positron, GitHub, and Zenodo"
-  favicon: images/favicon.png
-  
+
   navbar:
     left:
       - href: index.qmd
@@ -25,7 +24,7 @@ website:
         text: "6. Acceptance"
     right:
       - icon: github
-        href: https://github.com/olivierraven/open-research-workflow
+        href: https://github.com/OlivierRaven/Open_Research_Workflow
       - href: slides.qmd
         text: "Slides"
 

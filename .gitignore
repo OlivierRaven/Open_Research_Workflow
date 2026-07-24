@@ -1,6 +1,7 @@
 # Quarto
 /.quarto/
 _freeze/
+docs/
 
 # R
 .Rhistory
@@ -18,3 +19,5 @@ Thumbs.db
 # Large files
 *.zip
 *.tar.gz
+
+**/*.quarto_ipynb

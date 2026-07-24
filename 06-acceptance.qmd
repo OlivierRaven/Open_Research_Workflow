@@ -161,7 +161,7 @@ After following this workflow, you have:
 
 ::: {.callout-note}
 ### This guide itself follows this workflow
-This guide was written in Quarto, version controlled on GitHub, and archived on Zenodo at [doi.org/10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX). The source code is available at [github.com/olivierraven/open-research-workflow](https://github.com/olivierraven/open-research-workflow).
+This guide was written in Quarto and version controlled on GitHub. A permanent Zenodo DOI will be added once it is archived. The source code is available at [github.com/OlivierRaven/Open_Research_Workflow](https://github.com/OlivierRaven/Open_Research_Workflow).
 :::
 
 ---

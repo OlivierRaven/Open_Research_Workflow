@@ -112,7 +112,7 @@ The guide itself follows the workflow it describes — it is written in Quarto, 
 
 **License:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — feel free to adapt and reuse with attribution.
 
-**Cite as:** Raven, O.V. (2026). Open Research Workflow: A practical guide to reproducible research using Quarto, Positron, GitHub, and Zenodo. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
+**Cite as:** Raven, O.V. (2026). Open Research Workflow: A practical guide to reproducible research using Quarto, Positron, GitHub, and Zenodo. *DOI pending — will be archived on Zenodo.*
 
 ---
 

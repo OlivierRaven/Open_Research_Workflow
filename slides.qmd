@@ -9,8 +9,7 @@ format:
     theme: [default, slides-custom.scss]
     slide-number: true
     progress: true
-    logo: images/logo.png
-    footer: "Open Research Workflow | olivierraven.github.io | CC BY 4.0"
+    footer: "Open Research Workflow | olivierraven.github.io/Open_Research_Workflow | CC BY 4.0"
     transition: fade
     background-transition: fade
     highlight-style: github

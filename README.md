@@ -4,7 +4,7 @@ A practical guide to reproducible research using Quarto, Positron, GitHub, and Z
 
 ## Live site
 
-[olivierraven.github.io/open-research-workflow](https://olivierraven.github.io/open-research-workflow)
+[olivierraven.github.io/Open_Research_Workflow](https://olivierraven.github.io/Open_Research_Workflow)
 
 ## What this is
 
@@ -45,7 +45,7 @@ Content: CC BY 4.0 | Code: MIT
 
 Raven, O.V. (2026). Open Research Workflow: A practical guide to 
 reproducible research using Quarto, Positron, GitHub, and Zenodo. 
-Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
+DOI pending — will be archived on Zenodo.
 
 ## About
 
