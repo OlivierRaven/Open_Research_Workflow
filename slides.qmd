@@ -58,7 +58,7 @@ All your R code
 
 - Data cleaning
 - Statistical models
-- Figure generation
+- Figure & table generation
 - Session info
 
 Renders to **HTML**
@@ -70,7 +70,7 @@ Your clean manuscript
 
 - Introduction
 - Methods
-- Results (figures only)
+- Results (figures, tables, inline stats)
 - Discussion
 
 Renders to **PDF / Word**
@@ -80,6 +80,36 @@ Renders to **PDF / Word**
 . . .
 
 Both version controlled together on GitHub
+
+---
+
+## Numbers that stay in sync {background-color="#f8f9fa"}
+
+::: {.callout-important appearance="simple"}
+Never filter or subset data inside `index.qmd` — compute it in `analysis.qmd`, save it, then just read it back.
+:::
+
+. . .
+
+```{.r}
+# analysis.qmd
+report_stats <- list(
+  mean_stone = summary_table$mean_length[summary_table$shelter_type == "stone"],
+  pvalue = summary(model_preference)$coefficients[2, "Pr(>|t|)"]
+)
+saveRDS(report_stats, "outputs/report_stats.rds")
+```
+
+. . .
+
+```{.markdown}
+<!-- index.qmd -->
+mean = `r round(report_stats$mean_stone, 1)` mm, p = `r round(report_stats$pvalue, 3)`
+```
+
+. . .
+
+Re-render → the manuscript updates itself. No stale numbers.
 
 ---
 

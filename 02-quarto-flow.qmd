@@ -34,7 +34,9 @@ This means:
 
 ::: {.callout-note}
 ### A small exception: display-only chunks and inline code
-"Text only" doesn't mean *zero* code in `index.qmd`. A tiny `echo: false` chunk that reads a saved table and prints it, or inline code like `` `r round(mean_stone, 1)` `` in a sentence, is normal and encouraged — it's not analysis, just display. This is what keeps the numbers in your prose in sync with your actual results instead of a hardcoded value someone forgets to update after a revision.
+"Text only" doesn't mean *zero* code in `index.qmd`. A tiny `echo: false` chunk that reads a saved table and prints it, or inline code like `` `r round(report_stats$mean_stone, 1)` `` in a sentence, is normal and encouraged — it's not analysis, just display. This is what keeps the numbers in your prose in sync with your actual results instead of a hardcoded value someone forgets to update after a revision.
+
+**The rule of thumb:** any filtering, subsetting, or computation happens in `analysis.qmd` and gets saved to `outputs/`. `index.qmd` only ever *reads* — it never filters a data frame or picks out a row itself. If `index.qmd` needs `mean_stone`, `analysis.qmd` computes and saves `mean_stone`; `index.qmd` just loads it.
 :::
 
 ## Structure of analysis.qmd
@@ -105,12 +107,16 @@ summary_table
 model_preference <- lm(carapace_length_mm ~ shelter_type, data = data_clean)
 summary(model_preference)
 
-# Save the p-value too, so index.qmd can report it inline instead of
-# a hardcoded number that goes stale if the model changes
-model_pvalue <- summary(model_preference)$coefficients[2, "Pr(>|t|)"]
-
 saveRDS(model_preference, "outputs/model_preference.rds")
-saveRDS(model_pvalue, "outputs/model_pvalue.rds")
+
+# Save exactly the values index.qmd needs to report inline. Computed and
+# filtered here, in the reproducible record — index.qmd only ever reads
+# this back, it never filters or subsets anything itself.
+report_stats <- list(
+  mean_stone = summary_table$mean_length[summary_table$shelter_type == "stone"],
+  pvalue = summary(model_preference)$coefficients[2, "Pr(>|t|)"]
+)
+saveRDS(report_stats, "outputs/report_stats.rds")
 ```
 
 ## Figures
@@ -189,14 +195,13 @@ We fitted linear models in R [@RCoreTeam2024]...
 
 library(tidyverse)
 summary_table <- read_csv("outputs/tables/summary_table.csv")
-model_pvalue <- readRDS("outputs/model_pvalue.rds")
-mean_stone <- summary_table$mean_length[summary_table$shelter_type == "stone"]
+report_stats <- readRDS("outputs/report_stats.rds")
 ```
 
 Kōura showed a strong preference for stone configurations
 over wood (see @fig-preference). Carapace length also differed
-significantly by shelter type (mean stone = `r round(mean_stone, 1)` mm,
-p = `r round(model_pvalue, 3)`; @tbl-summary).
+significantly by shelter type (mean stone = `r round(report_stats$mean_stone, 1)` mm,
+p = `r round(report_stats$pvalue, 3)`; @tbl-summary).
 
 ![Kōura shelter preference by size class. Stone configurations
 were preferred across all size classes, with the strongest
@@ -236,7 +241,7 @@ In Positron, you can render each file independently:
 
 ::: {.callout-tip}
 ### Why does index.qmd load tidyverse and re-read the CSV again?
-Each `.qmd` file renders in its own independent R session — `index.qmd` never sees the objects `analysis.qmd` created in memory, only the files it saved (`outputs/tables/summary_table.csv`, `outputs/model_pvalue.rds`, `outputs/figures/fig-preference.png`). That's the whole point of the two-file split: `index.qmd`'s hidden setup chunk just re-loads those saved results, it doesn't repeat any analysis.
+Each `.qmd` file renders in its own independent R session — `index.qmd` never sees the objects `analysis.qmd` created in memory, only the files it saved (`outputs/tables/summary_table.csv`, `outputs/report_stats.rds`, `outputs/figures/fig-preference.png`). That's the whole point of the two-file split: `index.qmd`'s hidden setup chunk just re-loads those saved results, it doesn't repeat any analysis.
 :::
 
 ::: {.callout-note}
