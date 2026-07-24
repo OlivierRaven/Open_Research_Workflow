@@ -169,7 +169,9 @@ my_paper/
 
 . . .
 
-`.gitignore` keeps `outputs/`, raw data, and OS files out of version control — **total time: ~20 minutes**
+`.gitignore` keeps `outputs/`, raw data, and OS files out of version control 
+
+— **total time: ~20 minutes**
 
 ---
 
@@ -304,6 +306,54 @@ Sensitive data (privacy, sovereignty, endangered species locations)? Use Zenodo'
 - Fully reproducible analysis
 - Reviewer access without extra effort
 - Manuscript produced directly from the same code
+:::
+
+---
+
+## Where this goes next: living papers {background-color="#1a1a2e" color="white"}
+
+::: {.incremental}
+- Today, this workflow ends at acceptance — one archive, done
+- A **living paper** keeps evolving after that point, without ever touching what's already published
+:::
+
+. . .
+
+The published DOI never moves. That's not a limitation — it's the anchor everything else hangs off.
+
+---
+
+## The mechanism: concept DOI vs. version DOI
+
+```
+v1.0 (published)  →  v1.1 (correction)  →  v1.2 (new data)
+       │                    │                    │
+   its own DOI          its own DOI          its own DOI
+  (frozen forever)     (frozen forever)     (frozen forever)
+       └────────────────────┴────────────────────┘
+                same concept DOI throughout
+            (always resolves to the latest version)
+```
+
+. . .
+
+v1.0 stays exactly what your published paper cites — forever. Everything after it is a forward-only trail, not a revision.
+
+---
+
+## What "living" could mean in practice {background-color="#f8f9fa"}
+
+::: {.incremental}
+- A missing `renv.lock` or a typo fix, added as v1.1
+- A reviewer's follow-up question, finally answered — v1.2
+- Next season's data, reanalysed — v1.3
+- A CI badge: **"last verified reproducible: [date]"** — a live claim, not a static one
+:::
+
+. . .
+
+::: {.callout-tip appearance="simple"}
+The hard call isn't technical — it's deciding when a change is a new version of this paper versus when it's actually a new paper.
 :::
 
 ---
