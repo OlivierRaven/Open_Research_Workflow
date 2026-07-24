@@ -134,6 +134,29 @@ Right-click the file in Source Control → **Discard Changes**
 **Go back to an earlier version:**
 In Positron, open the Timeline panel (View → Open View → Timeline) to see the history of any file and restore an earlier version.
 
+## Working with co-authors
+
+Everything above works the same with co-authors — coordinating changes across people is the whole reason Git exists. A few things change once you're not working alone:
+
+### Add them as collaborators
+On GitHub: repo → **Settings** → **Collaborators** → **Add people**, using their GitHub username or email. They can now clone the repo and push commits directly, same as you.
+
+### Avoid stepping on each other
+- **Sync (pull) before you start working** each session — in Positron's Source Control panel, click **Sync** to pull down anyone else's changes before you add your own.
+- Split responsibility where you can (e.g. one person on Methods, another on Discussion) — two people editing the same section at the same time is the main source of conflicts.
+- If Git reports a **merge conflict**, Positron shows you the conflicting lines directly in the editor — choose which version to keep (or combine them), then stage and commit as normal.
+
+### For larger teams, use branches properly
+For three or more active collaborators, or more experimental work, give each person their own branch (see [Using branches](#using-branches-optional-but-useful) above) instead of everyone committing straight to `main`. GitHub **pull requests** add an optional review step before merging a branch in, if you want one.
+
+### List everyone on Zenodo
+When you reserve or publish your Zenodo record (chapter 4), add every co-author under **Creators** with their name and, ideally, their [ORCID](https://orcid.org) iD — this is what makes the permanent archived record credit everyone correctly, not just whoever happened to click upload.
+
+::: {.callout-tip}
+### What's an ORCID?
+A free, permanent researcher ID (orcid.org) that disambiguates your name from others and links your work across journals, Zenodo, and funders. Get one if you don't have one, and ask co-authors for theirs before publishing the Zenodo record.
+:::
+
 ## GitHub as a backup
 
 Every time you sync to GitHub, you have a complete backup of your project in the cloud. If your laptop dies, floods, or gets stolen the day before you submit, you can clone your repository onto any computer and pick up exactly where you left off.
