@@ -48,12 +48,14 @@ execute:
 
 ```{{r}}
 #| label: setup
+# Packages are installed once via renv::restore() (see chapter 1) —
+# no install.packages() here, so everyone gets the exact locked versions.
 library(tidyverse)
 library(brms)
 library(ggplot2)
 
-# Load derived data
-data <- read_csv("data/derived/koura_data.csv")
+# Load raw data — never modify data/raw/ itself, only read from it
+data <- read_csv("data/raw/koura_data.csv")
 ```
 
 ## Data cleaning
