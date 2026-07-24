@@ -42,7 +42,7 @@ Go to [zenodo.org](https://zenodo.org) → click **New Upload**
 ::: {.step-label}
 Step 2
 :::
-Upload your processed data files (CSV, etc.) and fill in the metadata: title, authors, description
+Upload your derived data files (CSV, etc.) and fill in the metadata: title, authors, description
 :::
 
 ::: {.step-box}

@@ -92,7 +92,7 @@ my_paper/
 ├── analysis.qmd           # all R code
 ├── data/
 │   ├── raw/               # NEVER modify
-│   └── processed/         # output of analysis.qmd
+│   └── derived/            # output of analysis.qmd
 ├── outputs/figures/       # figures from analysis.qmd
 ├── references/
 └── README.md

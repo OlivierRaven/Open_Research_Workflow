@@ -68,7 +68,7 @@ Not everything belongs in version control. Your `.gitignore` file tells Git what
 - `renv.lock` (package versions)
 - `references/references.bib`
 - `README.md`
-- Small processed data files (CSVs under ~10 MB)
+- Small derived data files (CSVs under ~10 MB)
 - R model objects (`*.rds`) if small enough
 
 **Ignore these:**

@@ -10,7 +10,7 @@ Once your manuscript is submitted, reviewers need to be able to access your code
 When you include your GitHub URL in the manuscript, reviewers can see:
 
 - Your `analysis.qmd` — every modelling decision, every line of code
-- Your `data/processed/` folder — the cleaned data used in the analysis
+- Your `data/derived/` folder — the cleaned data used in the analysis
 - Your `renv.lock` — the exact package versions you used
 - Your complete commit history — every change you made throughout the project
 - Your README — how to reproduce the analysis

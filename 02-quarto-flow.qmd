@@ -19,7 +19,7 @@ Both files are version controlled together on GitHub. Together they give the com
 
 ## How they connect
 
-`analysis.qmd` runs all your R code and saves figures and processed data to the `outputs/` folder. `index.qmd` references those saved files.
+`analysis.qmd` runs all your R code and saves figures and derived data to the `outputs/` folder. `index.qmd` references those saved files.
 
 ```
 analysis.qmd  →  runs R code  →  saves to outputs/figures/
@@ -52,8 +52,8 @@ library(tidyverse)
 library(brms)
 library(ggplot2)
 
-# Load processed data
-data <- read_csv("data/processed/koura_data.csv")
+# Load derived data
+data <- read_csv("data/derived/koura_data.csv")
 ```
 
 ## Data cleaning
@@ -68,8 +68,8 @@ data_clean <- data |>
                           breaks = c(0, 20, 35, Inf),
                           labels = c("juvenile", "sub-adult", "adult")))
 
-# Save processed data
-write_csv(data_clean, "data/processed/koura_clean.csv")
+# Save derived data
+write_csv(data_clean, "data/derived/koura_clean.csv")
 ```
 
 ## Statistical models
