@@ -7,6 +7,11 @@ The most important rule of reproducible research: **set everything up before you
 
 This page walks through everything you need to do on Day 1 of a new research project.
 
+::: {.callout-tip}
+### Prefer to start from a working project?
+The [starter template](index.qmd#get-the-starter-template) has this whole structure already built and renders out of the box — clone or download it and skip straight to filling in your own content.
+:::
+
 ## 1.1 Create your project folder structure
 
 A consistent folder structure makes your project navigable by anyone — including your future self six months from now.

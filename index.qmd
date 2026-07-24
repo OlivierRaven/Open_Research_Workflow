@@ -95,6 +95,15 @@ Create a GitHub release, publish your Zenodo record, and update your data availa
 | **renv** | Record exact R package versions | Free |
 | **Zenodo** | Permanent archive with a citable DOI | Free |
 
+## Get the starter template
+
+Skip the blank-page problem. This is a working Quarto project — folder structure, `analysis.qmd`, `index.qmd`, placeholder data — that renders out of the box. Every file marks exactly what to replace with `FILL IN` comments.
+
+::: {.text-center}
+[⬇ Download the .zip](downloads/open-research-workflow-template.zip){.btn .btn-primary}
+[Use the GitHub template →](https://github.com/OlivierRaven/open-research-workflow-template){.btn .btn-outline-primary}
+:::
+
 ## Who is this for?
 
 This guide is written for **PhD students and early-career researchers** in ecology and related fields who:

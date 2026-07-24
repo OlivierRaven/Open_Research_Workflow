@@ -18,6 +18,7 @@ Thumbs.db
 
 # Large files
 *.zip
+!downloads/*.zip
 *.tar.gz
 
 **/*.quarto_ipynb
