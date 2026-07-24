@@ -12,7 +12,7 @@ The heart of this workflow is a two-file Quarto structure. Most tutorials use a 
 | **Purpose** | Reproducible analytical record | Clean journal manuscript |
 | **Contains** | All R code, models, figures, tables | Text only, figure references |
 | **Who reads it** | Reviewers, other researchers | Journal editors, readers |
-| **Renders to** | HTML (best for code display) | PDF or Word (for submission) |
+| **Renders to** | HTML (best for code display) | PDF or Word for submission, HTML for a quick preview |
 | **Tone** | Code-heavy, annotated | Academic prose |
 
 Both files are version controlled together on GitHub. Together they give the complete picture of your research.
@@ -132,6 +132,8 @@ format:
     linestretch: 2
   docx:
     reference-doc: journal-template.docx
+  html:                          # handy for a quick preview, not for submission
+    toc: true
 bibliography: references/references.bib
 csl: references/aquatic-conservation.csl
 ---
