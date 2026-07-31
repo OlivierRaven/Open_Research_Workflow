@@ -159,6 +159,61 @@ When you reserve or publish your Zenodo record (chapter 4), add every co-author 
 A free, permanent researcher ID (orcid.org) that disambiguates your name from others and links your work across journals, Zenodo, and funders. Get one if you don't have one, and ask co-authors for theirs before publishing the Zenodo record.
 :::
 
+## Optional: verify reproducibility with GitHub Actions
+
+The template ships `scripts/generate_evidence.R`, which walks every
+`fig-`/`tbl-` label cited in `index.qmd`, traces it back through
+`analysis.qmd` to the reads/writes and code that actually produced it, and
+writes the result to `evidence.json`. Platforms like
+[ScienceEcosystem](https://scienceecosystem.org) can read this manifest to
+show a reader exactly what generated a given number — not just link to the
+repo in general.
+
+Running it locally (`Rscript scripts/generate_evidence.R`) proves your code
+still produces those claims *on your machine*. Running it in **GitHub
+Actions** on every push proves it on a clean checkout with nothing but what's
+committed — the actual claim a "reproducible" badge is making. Don't wire
+this up before `renv.lock` exists (Day 1 checklist, previous chapter) — a
+workflow with no lockfile to install from just fails on every push.
+
+Once `renv.lock` is committed, add `.github/workflows/reproduce.yml`:
+
+```yaml
+on:
+  push:
+    branches: [main]
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+      - uses: r-lib/actions/setup-renv@v2
+      - uses: quarto-dev/quarto-actions/setup@v2
+      - run: quarto render analysis.qmd && quarto render index.qmd
+      - run: Rscript scripts/generate_evidence.R
+      - uses: actions/upload-artifact@v4
+        with:
+          name: evidence
+          path: evidence.json
+```
+
+This is optional. Rendering and archiving on Zenodo (next chapter) works
+exactly the same whether or not you set this up — it's an extra layer of
+proof, not a requirement.
+
+::: {.callout-note}
+### Known limitations
+`generate_evidence.R` does static text analysis of R chunks, not real
+data-flow analysis — it reads variable assignments and file paths, it
+doesn't execute your code to trace them. It's R-only (no Python/Julia
+chunks), and can't always tell apart two unrelated chunks that happen to
+reuse the same short, generic variable name. These are documented in detail
+in the script's own header comment — read it before relying on the output
+for anything you haven't spot-checked.
+:::
+
 ## GitHub as a backup
 
 Every time you sync to GitHub, you have a complete backup of your project in the cloud. If your laptop dies, floods, or gets stolen the day before you submit, you can clone your repository onto any computer and pick up exactly where you left off.
