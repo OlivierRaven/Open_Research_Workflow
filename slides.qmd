@@ -56,30 +56,9 @@ Six months after submission. Sound familiar?
 
 All free. All open source.
 
----
-
-## More than just organisation {background-color="#f8f9fa"}
-
-::: {.point-cards}
-::: {.point-card}
-**LaTeX typesetting**
-PDF renders through LaTeX — proper academic layout immediately, not a fight with Word's page formatting
-:::
-
-::: {.point-card}
-**One-line CSL swap**
-Reformats every citation to match any journal's house style — no manual reformatting
-:::
-
-::: {.point-card}
-**Structured metadata**
-ORCID iDs, affiliations, funding statements flow straight into the rendered output
-:::
-:::
-
 . . .
 
-Change the journal, change one line. Not a re-format.
+Bonus: proper LaTeX typesetting, one-line CSL swap to match any journal's citation style, ORCID metadata flowing straight into the output — for free, not extra work.
 
 ---
 
@@ -232,36 +211,6 @@ Work → Stage (+) → Commit (✓) → Sync (↑)
 
 ---
 
-## Working with co-authors {background-color="#f8f9fa"}
-
-::: {.point-cards}
-::: {.point-card}
-**Add as collaborators**
-GitHub collaborators push commits directly, same as you
-:::
-
-::: {.point-card}
-**Sync first**
-Pull before you start each session to avoid conflicts
-:::
-
-::: {.point-card}
-**Split by section**
-Avoids two people editing the same part at once
-:::
-
-::: {.point-card}
-**Branch at scale**
-3+ people or experimental work → give each person a branch
-:::
-:::
-
-. . .
-
-List every co-author (with **ORCID**) on the Zenodo record — that's what makes the archived record credit everyone correctly
-
----
-
 ## The DOI timing problem
 
 ::: {.callout-important appearance="simple"}
@@ -287,8 +236,9 @@ DOI exists                            DOI goes live
 ::: {.column width="45%"}
 ::: {.step-list}
 1. zenodo.org → New Upload → fill metadata
-2. Click **Reserve DOI** (do not publish yet)
-3. Add the DOI + GitHub link to the manuscript
+2. List every co-author with their **ORCID** — that's what credits everyone correctly
+3. Click **Reserve DOI** (do not publish yet)
+4. Add the DOI + GitHub link to the manuscript
 :::
 :::
 
@@ -403,26 +353,17 @@ The published DOI never moves.
 :::
 
 ::: {.pull-stat-caption}
-That's not a limitation — it's the anchor everything else hangs off.
+That's the anchor everything else hangs off — concept DOI vs. version DOI:
 :::
-
----
-
-## The mechanism: concept DOI vs. version DOI
-
-```
-v1.0 (published)  →  v1.1 (correction)  →  v1.2 (new data)
-       │                    │                    │
-   its own DOI          its own DOI          its own DOI
-  (frozen forever)     (frozen forever)     (frozen forever)
-       └────────────────────┴────────────────────┘
-                same concept DOI throughout
-            (always resolves to the latest version)
-```
 
 . . .
 
-v1.0 stays exactly what your published paper cites — forever. Everything after it is a forward-only trail, not a revision.
+```
+v1.0 (published)  →  v1.1 (correction)  →  v1.2 (new data)
+     its own DOI          its own DOI          its own DOI
+    (frozen forever)     (frozen forever)     (frozen forever)
+         same concept DOI throughout (always resolves to latest)
+```
 
 ---
 
@@ -460,22 +401,6 @@ The hard call isn't technical — it's deciding when a change is a new version o
 
 ---
 
-## Further resources {background-color="#f8f9fa"}
-
-Full guide: **scienceecosystem.org/open-research-workflow**
-
-- Le Foll (2026): Quarto for Reproducible Research
-- blenback: R for Reproducible Research
-- SIB Swiss: Make Your Research FAIRer
-
-. . .
-
-This presentation itself follows the workflow it describes.
-
-**Source:** github.com/OlivierRaven/Open_Research_Workflow
-
----
-
 ## Questions? {background-color="#2E7D6B" color="white" text-align="center"}
 
 ::: {.text-center}
@@ -484,4 +409,6 @@ This presentation itself follows the workflow it describes.
 University of Waikato | ScienceEcosystem.org
 
 [scienceecosystem.org/open-research-workflow](https://scienceecosystem.org/open-research-workflow)
+
+Full guide, further reading, and this deck's own source — all at the link above.
 :::
