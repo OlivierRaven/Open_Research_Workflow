@@ -33,8 +33,10 @@ $code-block-bg: #f4f4f4;
   color: #888;
 }
 
+// Fully hidden until revealed (was 0.4 — audiences could half-read ahead,
+// which blunts the point of an incremental reveal in the first place).
 .reveal .incremental > * {
-  opacity: 0.4;
+  opacity: 0;
 }
 
 .reveal .incremental > .visible {
@@ -74,4 +76,197 @@ $code-block-bg: #f4f4f4;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 0.3em;
+}
+
+// ---- numbered step list — replaces plain dashes for anything procedural ----
+.step-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: step;
+}
+
+.step-list li {
+  counter-increment: step;
+  position: relative;
+  padding: 0.3em 0 0.3em 2.3em;
+  margin-bottom: 0.4em;
+}
+
+.step-list li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background: $primary;
+  color: white;
+  font-weight: 700;
+  font-size: 0.65em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reveal[data-background-color="#1a1a2e"] .step-list li::before,
+.reveal[data-background-color="#2E7D6B"] .step-list li::before {
+  background: white;
+  color: $primary;
+}
+
+// ---- point cards — a set of parallel points as cards, not a dash list ----
+.point-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.9em;
+  margin-top: 0.7em;
+}
+
+.point-card {
+  background: #f8f9fa;
+  border-left: 4px solid $secondary;
+  border-radius: 6px;
+  padding: 0.7em 1em;
+  font-size: 0.72em;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.point-card strong {
+  display: block;
+  color: $primary;
+  font-size: 1.15em;
+  margin-bottom: 0.2em;
+}
+
+// ---- checklist — for payoff / summary slides ----
+.check-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.check-list li {
+  position: relative;
+  padding: 0.28em 0 0.28em 1.9em;
+  margin-bottom: 0.35em;
+}
+
+.check-list li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: $secondary;
+  font-weight: 900;
+  font-size: 1.15em;
+}
+
+.reveal[data-background-color="#1a1a2e"] .check-list li::before {
+  color: $secondary;
+}
+
+// ---- good/bad contrast pair ----
+.good-bad {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2em;
+  margin-top: 0.7em;
+}
+
+.good-bad .good, .good-bad .bad {
+  border-radius: 6px;
+  padding: 0.7em 1em;
+  font-size: 0.62em;
+  line-height: 1.6;
+}
+
+.good-bad .good {
+  background: rgba(76, 175, 147, 0.12);
+  border-left: 4px solid $secondary;
+}
+
+.good-bad .bad {
+  background: rgba(192, 57, 43, 0.08);
+  border-left: 4px solid #c0392b;
+}
+
+.good-bad .badge {
+  display: block;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5em;
+}
+
+.good-bad .good .badge { color: $secondary; }
+.good-bad .bad .badge { color: #c0392b; }
+
+// ---- big pull-stat beat slide — a break in the visual rhythm ----
+.pull-stat {
+  font-size: 2.4em;
+  font-weight: 800;
+  color: $primary;
+  text-align: center;
+  line-height: 1.15;
+  margin: 0.2em 0;
+}
+
+.pull-stat-caption {
+  text-align: center;
+  font-size: 0.85em;
+  color: #666;
+}
+
+.reveal[data-background-color="#1a1a2e"] .pull-stat {
+  color: white;
+}
+.reveal[data-background-color="#1a1a2e"] .pull-stat-caption {
+  color: #b8c4d9;
+}
+
+// ---- screenshot placeholder — an explicit, findable TODO, not a bug ----
+.shot-placeholder {
+  border: 2px dashed $secondary;
+  border-radius: 8px;
+  background: rgba(76, 175, 147, 0.06);
+  padding: 1.5em 1em;
+  text-align: center;
+  color: $secondary;
+  font-size: 0.65em;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.shot-placeholder .icon {
+  font-size: 2.2em;
+  display: block;
+  margin-bottom: 0.25em;
+}
+
+// ---- mini flow — short linear sequences (co-author steps, versions) ----
+.mini-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  margin-top: 0.7em;
+  font-size: 0.7em;
+  flex-wrap: wrap;
+}
+
+.mini-flow .step {
+  background: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.55em 1em;
+  font-weight: 600;
+}
+
+.mini-flow .arrow {
+  color: $secondary;
+  font-weight: 900;
+  font-size: 1.1em;
 }

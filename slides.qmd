@@ -18,13 +18,22 @@ format:
     height: 720
 ---
 
-## Why does this matter? {background-color="#2E7D6B"}
+## Why does this matter? {background-color="#2E7D6B" color="white"}
+
+::: {.pull-stat}
+"Wait — which script made this number again?"
+:::
+
+::: {.pull-stat-caption}
+Six months after submission. Sound familiar?
+:::
+
+. . .
 
 ::: {.incremental}
 - Journals increasingly **require** data availability statements
 - Reviewers increasingly **check** that analyses are reproducible
 - Funders increasingly **mandate** open data
-- Your future self will thank you when you need to rerun an analysis
 :::
 
 . . .
@@ -33,7 +42,7 @@ format:
 
 ---
 
-## The tools {background-color="#1a1a2e"}
+## The tools {background-color="#1a1a2e" color="white"}
 
 | Tool | Purpose |
 |---|---|
@@ -51,10 +60,21 @@ All free. All open source.
 
 ## More than just organisation {background-color="#f8f9fa"}
 
-::: {.incremental}
-- PDF renders through **LaTeX** — proper academic typesetting immediately, not a fight with Word's page layout
-- One-line **CSL** swap reformats every citation to match any journal's house style
-- Structured author metadata — **ORCID iDs**, affiliations, funding statements — flows straight into the rendered output
+::: {.point-cards}
+::: {.point-card}
+**LaTeX typesetting**
+PDF renders through LaTeX — proper academic layout immediately, not a fight with Word's page formatting
+:::
+
+::: {.point-card}
+**One-line CSL swap**
+Reformats every citation to match any journal's house style — no manual reformatting
+:::
+
+::: {.point-card}
+**Structured metadata**
+ORCID iDs, affiliations, funding statements flow straight into the rendered output
+:::
 :::
 
 . . .
@@ -140,7 +160,7 @@ Re-render → the manuscript updates itself. Change your model, get a new number
 
 ::: {.columns}
 ::: {.column width="55%"}
-::: {.incremental}
+::: {.step-list}
 1. Create project folder structure
 2. Source Control → **Initialize Repository**
 3. Commit → **Publish to GitHub** (Public)
@@ -169,9 +189,12 @@ my_paper/
 
 . . .
 
-`.gitignore` keeps `outputs/`, raw data, and OS files out of version control 
+`.gitignore` keeps `outputs/`, raw data, and OS files out of version control — **total time: ~20 minutes**
 
-— **total time: ~20 minutes**
+::: {.shot-placeholder}
+[📷]{.icon}
+TODO: screenshot of Positron's Source Control panel here — Stage / Commit / Sync buttons, exactly as slide "Daily workflow" describes them next
+:::
 
 ---
 
@@ -185,31 +208,52 @@ Work → Stage (+) → Commit (✓) → Sync (↑)
 
 . . .
 
-Good commit messages:
-
-```
+::: {.good-bad}
+::: {.good}
+[Good commit messages]{.badge}
 "added linear model for shelter preference"
-"fixed figure 3 axis label"  
+
+"fixed figure 3 axis label"
+
 "updated discussion after reviewer 2 comment"
-```
+:::
 
-. . .
+::: {.bad}
+[Bad commit messages]{.badge}
+"update"
 
-Bad commit messages:
+"fix"
 
-```
-"update"    "fix"    "changes"    "final version 3"
-```
+"changes"
+
+"final version 3"
+:::
+:::
 
 ---
 
 ## Working with co-authors {background-color="#f8f9fa"}
 
-::: {.incremental}
-- Add them as **GitHub collaborators** — they push commits directly, same as you
-- **Sync before you start** each session to avoid conflicts
-- Split responsibility by section to avoid two people editing the same part
-- 3+ people or experimental work → give each person a **branch**
+::: {.point-cards}
+::: {.point-card}
+**Add as collaborators**
+GitHub collaborators push commits directly, same as you
+:::
+
+::: {.point-card}
+**Sync first**
+Pull before you start each session to avoid conflicts
+:::
+
+::: {.point-card}
+**Split by section**
+Avoids two people editing the same part at once
+:::
+
+::: {.point-card}
+**Branch at scale**
+3+ people or experimental work → give each person a branch
+:::
 :::
 
 . . .
@@ -239,10 +283,18 @@ DOI exists                            DOI goes live
 
 ## Before submission
 
-::: {.incremental}
+::: {.columns}
+::: {.column width="45%"}
+::: {.step-list}
 1. zenodo.org → New Upload → fill metadata
 2. Click **Reserve DOI** (do not publish yet)
-3. Add to manuscript:
+3. Add the DOI + GitHub link to the manuscript
+:::
+:::
+
+::: {.column width="55%"}
+![The real Zenodo upload screen — Files, Visibility, and Publish. Reserve DOI lives further down, in the identifiers section of the metadata form.](images/zenodo-upload.png){width="100%"}
+:::
 :::
 
 . . .
@@ -265,14 +317,33 @@ Reviewers access code directly via the **public GitHub URL** — but many won't 
 
 ## Licensing & keeping things secure {background-color="#f8f9fa"}
 
-**Defaults that satisfy nearly every journal/funder:** CC BY 4.0 (data) · MIT (code)
+**Defaults that satisfy nearly every journal/funder:**
+
+::: {.point-cards}
+::: {.point-card}
+**CC BY 4.0**
+The default for data — reuse allowed, attribution required
+:::
+
+::: {.point-card}
+**MIT**
+The default for code — permissive, minimal restrictions
+:::
+
+::: {.point-card}
+**CC BY-NC**
+Blocks commercial use, if that matters for your work
+:::
+
+::: {.point-card}
+**GPL**
+Keeps derivatives open-source too
+:::
+:::
 
 . . .
 
-::: {.incremental}
-- Need more control? CC BY-NC blocks commercial use, GPL keeps derivatives open-source
-- **A license controls reuse, not access** — it doesn't hide anything
-:::
+**A license controls reuse, not access** — it doesn't hide anything
 
 . . .
 
@@ -284,12 +355,20 @@ Sensitive data (privacy, sovereignty, endangered species locations)? Use Zenodo'
 
 ## After acceptance {background-color="#2E7D6B" color="white"}
 
-::: {.incremental}
+::: {.columns}
+::: {.column width="42%"}
+::: {.step-list}
 1. Final commit: `"final version — accepted by [Journal]"`
 2. Sync to GitHub
 3. GitHub → Releases → **Create release** → tag `v1.0`
 4. zenodo.org → find draft → **Publish**
 5. Update data availability statement
+:::
+:::
+
+::: {.column width="58%"}
+![A real repo — "Releases" and "Create a new release" sit in the sidebar, bottom right.](images/github-upload.png){width="100%"}
+:::
 :::
 
 . . .
@@ -300,7 +379,7 @@ Sensitive data (privacy, sovereignty, endangered species locations)? Use Zenodo'
 
 ## What you get {background-color="#1a1a2e" color="white"}
 
-::: {.incremental}
+::: {.check-list}
 - Complete version history of every decision
 - Permanent, citable DOI for code and data
 - Fully reproducible analysis
@@ -319,7 +398,13 @@ Sensitive data (privacy, sovereignty, endangered species locations)? Use Zenodo'
 
 . . .
 
-The published DOI never moves. That's not a limitation — it's the anchor everything else hangs off.
+::: {.pull-stat}
+The published DOI never moves.
+:::
+
+::: {.pull-stat-caption}
+That's not a limitation — it's the anchor everything else hangs off.
+:::
 
 ---
 
@@ -343,12 +428,29 @@ v1.0 stays exactly what your published paper cites — forever. Everything after
 
 ## What "living" could mean in practice {background-color="#f8f9fa"}
 
-::: {.incremental}
-- A missing `renv.lock` or a typo fix, added as v1.1
-- A reviewer's follow-up question, finally answered — v1.2
-- Next season's data, reanalysed — v1.3
-- A CI badge: **"last verified reproducible: [date]"** — a live claim, not a static one
+::: {.mini-flow}
+
+::: {.step}
+Missing `renv.lock` → **v1.1**
 :::
+
+[→]{.arrow}
+
+::: {.step}
+Reviewer question answered → **v1.2**
+:::
+
+[→]{.arrow}
+
+::: {.step}
+Next season's data → **v1.3**
+:::
+
+:::
+
+. . .
+
+A CI badge: **"last verified reproducible: [date]"** — a live claim, not a static one
 
 . . .
 
@@ -363,7 +465,7 @@ The hard call isn't technical — it's deciding when a change is a new version o
 Full guide: **scienceecosystem.org/open-research-workflow**
 
 - Le Foll (2026): Quarto for Reproducible Research
-- blenback: R for Reproducible Research  
+- blenback: R for Reproducible Research
 - SIB Swiss: Make Your Research FAIRer
 
 . . .
