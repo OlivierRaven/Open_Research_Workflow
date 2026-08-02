@@ -161,7 +161,7 @@ my_paper/
 │   ├── figures/
 │   └── tables/
 ├── references/
-└── README.md
+└── README.md 
 ```
 :::
 :::
@@ -169,11 +169,6 @@ my_paper/
 . . .
 
 `.gitignore` keeps `outputs/`, raw data, and OS files out of version control — **total time: ~20 minutes**
-
-::: {.shot-placeholder}
-[📷]{.icon}
-TODO: screenshot of Positron's Source Control panel here — Stage / Commit / Sync buttons, exactly as slide "Daily workflow" describes them next
-:::
 
 ---
 
@@ -208,6 +203,10 @@ Work → Stage (+) → Commit (✓) → Sync (↑)
 "final version 3"
 :::
 :::
+
+. . .
+
+![Positron's Source Control panel — the same Stage / Commit / Sync flow, live.](images/positron-upload.png){width="55%" fig-align="center"}
 
 ---
 
@@ -353,21 +352,10 @@ The published DOI never moves.
 :::
 
 ::: {.pull-stat-caption}
-That's the anchor everything else hangs off — concept DOI vs. version DOI:
+Concept DOI vs. version DOI — that's the anchor everything else hangs off.
 :::
 
 . . .
-
-```
-v1.0 (published)  →  v1.1 (correction)  →  v1.2 (new data)
-     its own DOI          its own DOI          its own DOI
-    (frozen forever)     (frozen forever)     (frozen forever)
-         same concept DOI throughout (always resolves to latest)
-```
-
----
-
-## What "living" could mean in practice {background-color="#f8f9fa"}
 
 ::: {.mini-flow}
 
@@ -388,10 +376,6 @@ Next season's data → **v1.3**
 :::
 
 :::
-
-. . .
-
-A CI badge: **"last verified reproducible: [date]"** — a live claim, not a static one
 
 . . .
 
