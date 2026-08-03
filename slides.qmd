@@ -381,7 +381,7 @@ The hard call isn't technical — it's deciding when a change is a new version o
 
 University of Waikato | ScienceEcosystem.org
 
-[scienceecosystem.org/open-research-workflow](https://scienceecosystem.org/open-research-workflow)
+[olivierraven.github.io/Open_Research_Workflow](https://olivierraven.github.io/Open_Research_Workflow/)
 
 Full guide, further reading, and this deck's own source — all at the link above.
 :::
