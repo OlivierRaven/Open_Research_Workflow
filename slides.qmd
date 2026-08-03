@@ -63,6 +63,43 @@ Bonus: proper LaTeX typesetting, one-line CSL swap to match any journal's citati
 
 ---
 
+## Day 1: Setup in Positron {background-color="#2E7D6B" color="white"}
+
+::: {.columns}
+::: {.column width="55%"}
+::: {.step-list}
+- Create project folder structure
+- Source Control → **Initialize Repository**
+- Commit → **Publish to GitHub** (Public)
+- `renv::init()` + `renv::snapshot()`
+- zenodo.org → Settings → GitHub → toggle repo **ON**
+:::
+:::
+
+::: {.column width="45%"}
+```
+my_paper/
+├── _quarto.yml
+├── index.qmd
+├── analysis.qmd
+├── data/
+│   ├── raw/         # NEVER modify
+│   └── derived/
+├── outputs/
+│   ├── figures/
+│   └── tables/
+├── references/
+└── README.md
+```
+:::
+:::
+
+. . .
+
+`.gitignore` keeps `outputs/`, raw data, and OS files out of version control — **total time: ~20 minutes**
+
+---
+
 ## The two-file approach {background-color="#f8f9fa"}
 
 ::: {.columns}
@@ -136,43 +173,6 @@ Re-render → the manuscript updates itself. Change your model, get a new number
 
 ---
 
-## Day 1: Setup in Positron {background-color="#2E7D6B" color="white"}
-
-::: {.columns}
-::: {.column width="55%"}
-::: {.step-list}
-1. Create project folder structure
-2. Source Control → **Initialize Repository**
-3. Commit → **Publish to GitHub** (Public)
-4. `renv::init()` + `renv::snapshot()`
-5. zenodo.org → Settings → GitHub → toggle repo **ON**
-:::
-:::
-
-::: {.column width="45%"}
-```
-my_paper/
-├── _quarto.yml
-├── index.qmd
-├── analysis.qmd
-├── data/
-│   ├── raw/         # NEVER modify
-│   └── derived/
-├── outputs/
-│   ├── figures/
-│   └── tables/
-├── references/
-└── README.md 
-```
-:::
-:::
-
-. . .
-
-`.gitignore` keeps `outputs/`, raw data, and OS files out of version control — **total time: ~20 minutes**
-
----
-
 ## Daily workflow
 
 In the Positron Source Control panel:
@@ -235,10 +235,10 @@ DOI exists                            DOI goes live
 ::: {.columns}
 ::: {.column width="45%"}
 ::: {.step-list}
-1. zenodo.org → New Upload → fill metadata
-2. List every co-author with their **ORCID**
-3. Click **Reserve DOI** (do not publish yet)
-4. Add the DOI + GitHub link to the manuscript
+- zenodo.org → New Upload → fill metadata
+- List every co-author with their **ORCID**
+- Click **Reserve DOI** (do not publish yet)
+- Add the DOI + GitHub link to the manuscript
 :::
 :::
 
@@ -296,11 +296,11 @@ Sensitive data (privacy, sovereignty, endangered species locations)? Use Zenodo'
 ::: {.columns}
 ::: {.column width="42%"}
 ::: {.step-list}
-1. Final commit: `"final version — accepted by [Journal]"`
-2. Sync to GitHub
-3. GitHub → Releases → **Create release** → tag `v1.0`
-4. zenodo.org → find draft → **Publish**
-5. Update data availability statement
+- Final commit: `"final version — accepted by [Journal]"`
+- Sync to GitHub
+- GitHub → Releases → **Create release** → tag `v1.0`
+- zenodo.org → find draft → **Publish**
+- Update data availability statement
 :::
 :::
 
