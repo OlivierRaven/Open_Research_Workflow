@@ -266,6 +266,11 @@ $code-block-bg: #f4f4f4;
   border-radius: 6px;
   padding: 0.55em 1em;
   font-weight: 600;
+  // Explicit dark text, not inherited — this box is always light-colored
+  // regardless of the slide's own background, so it can't rely on
+  // inheriting white from a dark slide (was invisible: white text on
+  // this light gray box).
+  color: $body-color;
 }
 
 .mini-flow .arrow {
