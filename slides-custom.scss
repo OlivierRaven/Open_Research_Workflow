@@ -79,8 +79,12 @@ $code-block-bg: #f4f4f4;
 }
 
 // ---- numbered step list — replaces plain dashes for anything procedural ----
-.step-list {
-  list-style: none;
+// .reveal ol (the theme's own default numbering) has higher specificity than
+// a bare .step-list class, so without this the theme's native "1." showed
+// up right next to the custom circled number — .reveal .step-list plus
+// !important guarantees this wins regardless of the theme's own rule order.
+.reveal .step-list {
+  list-style: none !important;
   margin: 0;
   padding: 0;
   counter-reset: step;
@@ -205,10 +209,15 @@ $code-block-bg: #f4f4f4;
 .good-bad .bad .badge { color: #c0392b; }
 
 // ---- big pull-stat beat slide — a break in the visual rhythm ----
+// Both current uses sit on a dark background with the slide's own
+// color="white" set — inheriting that (rather than hardcoding a color
+// meant for a light background) is what makes this legible there. If a
+// pull-stat ever lands on a plain light slide, it'll correctly inherit
+// that slide's default dark body text instead.
 .pull-stat {
   font-size: 2.4em;
   font-weight: 800;
-  color: $primary;
+  color: inherit;
   text-align: center;
   line-height: 1.15;
   margin: 0.2em 0;
@@ -217,14 +226,8 @@ $code-block-bg: #f4f4f4;
 .pull-stat-caption {
   text-align: center;
   font-size: 0.85em;
-  color: #666;
-}
-
-.reveal[data-background-color="#1a1a2e"] .pull-stat {
-  color: white;
-}
-.reveal[data-background-color="#1a1a2e"] .pull-stat-caption {
-  color: #b8c4d9;
+  color: inherit;
+  opacity: 0.75;
 }
 
 // ---- screenshot placeholder — an explicit, findable TODO, not a bug ----

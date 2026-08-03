@@ -16,6 +16,7 @@ format:
     code-copy: true
     width: 1280
     height: 720
+    scrollable: true
 ---
 
 ## Why does this matter? {background-color="#2E7D6B" color="white"}
@@ -235,32 +236,20 @@ DOI exists                            DOI goes live
 ::: {.column width="45%"}
 ::: {.step-list}
 1. zenodo.org → New Upload → fill metadata
-2. List every co-author with their **ORCID** — that's what credits everyone correctly
+2. List every co-author with their **ORCID**
 3. Click **Reserve DOI** (do not publish yet)
 4. Add the DOI + GitHub link to the manuscript
 :::
 :::
 
 ::: {.column width="55%"}
-![The real Zenodo upload screen — Files, Visibility, and Publish. Reserve DOI lives further down, in the identifiers section of the metadata form.](images/zenodo-upload.png){width="100%"}
+![The real Zenodo upload screen. Reserve DOI lives further down, in the identifiers section.](images/zenodo-upload.png){width="100%"}
 :::
 :::
 
 . . .
 
-```
-Data available at https://doi.org/10.5281/zenodo.XXXXXXX
-(upon acceptance) and github.com/user/repo
-```
-
-. . .
-
-Reviewers access code directly via the **public GitHub URL** — but many won't think to look unless you tell them:
-
-::: {.incremental}
-- Mention the links in your **cover letter**, not just the data availability statement
-- Double-blind journal? Use an **Anonymous GitHub** mirror instead of your real profile
-:::
+Reviewers reach your code via the **public GitHub URL** — mention it in your **cover letter**, not just the data availability statement. Double-blind? Use an **Anonymous GitHub** mirror instead.
 
 ---
 
